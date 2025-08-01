@@ -1,0 +1,14 @@
+#middle {
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+
+  height: 60vh;
+
+  display: flex;
+}
+
+#middle .panel {
+  border: solid 1px black;
+  flex: 1;
+}
