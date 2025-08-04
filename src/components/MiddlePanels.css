@@ -3,7 +3,7 @@
   min-width: 100vw;
   max-width: 100vw;
 
-  height: 60vh;
+  height: calc(80vh - 475px);
 
   display: flex;
 }
