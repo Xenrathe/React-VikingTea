@@ -14,7 +14,7 @@
   height: 100%;
   width: 100%;
   max-width: 1500px;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
 }
 
@@ -23,7 +23,7 @@
   height: 475px;
   width: 100%;
   max-width: 1500px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .single-wave img {
@@ -34,18 +34,7 @@
 
 #boat-img {
   position: absolute;
-  left: 50px;
+  left: 130px;
   top: 30px;
   height: 480px;
-  animation: riding-the-waves 2s linear infinite;
-  transform-origin: center;
 }
-
-@keyframes riding-the-waves {
-  0%   { transform: translateY(30px) rotateZ(5deg); }
-  25%  { transform: translateY(10px) rotateZ(0deg); }
-  50%  { transform: translateY(-20px) rotateZ(-5deg); }
-  75%  { transform: translateY(10px) rotateZ(0deg); }
-  100% { transform: translateY(30px) rotateZ(5deg); }
-}
-

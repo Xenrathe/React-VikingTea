@@ -14,8 +14,8 @@ export default function BottomBar() {
         <Wave image={Wave3} speed={6} />
         <Wave image={Wave2} speed={7} />
         <img id="boat-img" src={BoatWDog} />
-        <Wave image={Wave1} speed={8} />
+        <Wave image={Wave1} speed={8} syncBoat={true} />
       </div>
     </div>
-  )
+  );
 }
