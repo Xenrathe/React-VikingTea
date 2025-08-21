@@ -1,13 +1,85 @@
 #top {
-  width: 100vw;
-  min-width: 100vw;
-  max-width: 100vw;
+  width: 96vw;
+  min-width: 96vw;
+  max-width: 96vw;
 
-  height: calc(20vh - 475px);
+  height: max(70px, calc(20vh - 475px));
   margin-top: 5vh;
   margin-bottom: 5vh;
 
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(212, 250, 250);
+}
+
+#top #announcement {
+  background: rgb(49, 66, 77);
+  color: rgb(212, 250, 250);
+  width: 100%;
+  font-size: 12px;
+  min-height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#top nav {
+  flex: 1;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#top nav div {
+  box-sizing: border-box;
+  min-width: 33%;
+  max-width: 33%;
+  display: flex;
+}
+
+#top #categories {
+  gap: 10px;
+  padding-left: 10px;
+}
+
+#top #icon-and-title {
+  justify-content: center;
+  font-family: "NorseBold";
+  font-size: 30px;
+}
+
+#top #cart {
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+  gap: 3px;
+}
+
+#top #boat-cart {
+  height: 40px;
+}
+
+#top #count-cart {
+  border: 1px solid rgb(21, 17, 248);
+  border-radius: 20px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  height: 25px;
+  width: 25px;
 }
+
+/* FITTING THE NUMBER IN THE BOAT SAILS
+#top #count-cart {
+  position: absolute;
+  right: 35px;
+  top: 1px;
+  font-size: 14px;
+}*/
