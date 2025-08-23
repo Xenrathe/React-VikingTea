@@ -23,16 +23,22 @@ export default function TopBar({ cart, setCart }) {
       <nav>
         <div id="categories">
           <NavLink
-            to="/Gyokuro"
+            to="/Green"
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
-            Gyokuro
+            Green
           </NavLink>
           <NavLink
-            to="/Sencha"
+            to="/Oolong"
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
-            Sencha
+            Oolong
+          </NavLink>
+          <NavLink
+            to="/Black"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Black
           </NavLink>
           <NavLink
             to="/Teaware"

@@ -9,7 +9,7 @@ import Wave from "./Wave";
 export default function BottomBar() {
   return (
     <div id="bottom">
-      <div class="waves-viewport">
+      <div className="waves-viewport">
         <Wave image={Wave4} speed={2} />
         <Wave image={Wave3} speed={4} />
         <Wave image={Wave2} speed={6} />

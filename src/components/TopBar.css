@@ -1,7 +1,7 @@
 #top {
-  width: 96vw;
-  min-width: 96vw;
-  max-width: 96vw;
+  width: min(1500px, 96vw);
+  min-width: min(1500px, 96vw);
+  max-width: min(1500px, 96vw);
 
   height: max(70px, calc(20vh - 475px));
   margin-top: 5vh;

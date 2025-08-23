@@ -9,19 +9,18 @@ import "./components/MiddlePanels.css";
 
 function App() {
   const [cart, setCart] = useState([{ Name: "Sencha", Count: 3 }]);
-  const [category, setCategory] = useState("Gyokuro");
+  const [shoppingItem, setShoppingItem] = useState(null);
 
   return (
     <div className="app">
-      <TopBar
-        cart={cart}
-        setCart={setCart}
-        category={category}
-        setCategory={setCategory}
-      />
+      <TopBar cart={cart} setCart={setCart} />
       <div id="middle">
-        <Outlet />
-        <ShoppingItem />
+        <Outlet context={{ setShoppingItem }} />
+        <ShoppingItem
+          shoppingItem={shoppingItem}
+          cart={cart}
+          setCart={setCart}
+        />
       </div>
       <BottomBar />
     </div>
