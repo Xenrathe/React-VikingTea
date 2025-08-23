@@ -49,6 +49,18 @@
   padding-left: 10px;
 }
 
+#top #categories a {
+  color: rgb(9, 106, 170);
+  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
+  transition: all 0.5s;
+}
+
+#top #categories a:hover,
+#top #categories .active-link {
+  color: rgb(6, 65, 105);
+  background: #f4d35e;
+}
+
 #top #icon-and-title {
   justify-content: center;
   font-family: "NorseBold";
