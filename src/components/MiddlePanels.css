@@ -42,6 +42,11 @@
   width: 150px;
 }
 
+#middle .tea-shelf .label {
+  max-width: 80%;
+  text-align: center;
+}
+
 #middle #item-display {
   display: flex;
 }
