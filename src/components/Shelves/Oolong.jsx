@@ -13,49 +13,49 @@ const teas = [
   {
     Name: "Bao Zhong",
     Image: BaoZhong,
-    Adjectives: "Smoky, brave, lingering",
+    Adjectives: "smoky • brave • lingering",
     Description:
       "Harvested atop the jagged fjords of Nordhjem by the Valkyrie Tea Clan, this oolong sings of smoke and iron.",
   },
   {
     Name: "Dong Fang Hong",
     Image: DongFangHong,
-    Adjectives: "Fiery, bold, heroic",
+    Adjectives: "fiery • bold • heroic",
     Description:
       "A blood-red oolong forged in the eastern peaks of Fjallheim, its aroma tells tales of dragons and battlefields.",
   },
   {
     Name: "Iron Goddess of Mercy",
     Image: IronGoddessOfMercy,
-    Adjectives: "Resolute, meditative, strong",
+    Adjectives: "resolute • meditative • strong",
     Description:
       "Steeped in the sacred halls of Skjoldfjord, this legendary oolong balances iron strength with the calm of the northern winds.",
   },
   {
-    Name: "Phoenix Dancong Lan Hua Xiang",
+    Name: "Phoenix Dancong",
     Image: PhoenixDancongLanHuaXiang,
-    Adjectives: "Reborn, mystical, fragrant",
+    Adjectives: "reborn • mystical • fragrant",
     Description:
       "Plucked from the mystical peaks of Eldfjell, each leaf rises like a phoenix from the ashes of volcanic soil.",
   },
   {
-    Name: "Ruby",
+    Name: "Ruby Oolong",
     Image: Ruby,
-    Adjectives: "Vivid, daring, spirited",
+    Adjectives: "vivid • daring • spirited",
     Description:
       "This crimson oolong hails from the ruby cliffs of Skarvheim, beloved by shieldmaidens for its fiery essence.",
   },
   {
-    Name: "Shan Lin Xi Gao Shan Cha",
+    Name: "Shan Lin Xi Gao Shan",
     Image: ShanLinXiGaoShanCha,
-    Adjectives: "Highland, sharp, invigorating",
+    Adjectives: "highland • sharp • invigorating",
     Description:
       "Grown on the high peaks of the Gao Shan ridges, this oolong invigorates like a morning raid along icy fjords.",
   },
   {
     Name: "Tropical Coconut",
     Image: TropicalCoconut,
-    Adjectives: "Exotic, daring, sun-kissed",
+    Adjectives: "exotic • daring • sun-kissed",
     Description:
       "Brought from the distant southern isles of Vesterhavn, where the sun warms the coconut palms and the sea hums a sailor's tune.",
   },

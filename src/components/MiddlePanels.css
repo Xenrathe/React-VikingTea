@@ -49,8 +49,96 @@
 
 #middle #item-display {
   display: flex;
+  box-sizing: border-box;
+  padding: 5px;
 }
 
 #middle #item-display img {
   height: 100%;
+}
+
+#middle #item-right {
+  display: flex;
+  flex-direction: column;
+}
+
+#middle #item-display .title {
+  padding-left: 10%;
+  margin-top: 3%;
+  font-size: 30px;
+  font-family: Garamond;
+}
+
+#middle #item-display .adjectives {
+  padding-left: 15%;
+  margin-bottom: 10%;
+  font-size: 19px;
+  font-family: Garamond;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+#middle #item-display #right-description {
+  padding-left: 7%;
+  margin-bottom: 3%;
+  font-size: 13px;
+  font-family: Georgia;
+}
+
+#middle #item-display #right-cart {
+  display: flex;
+  gap: 5px;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+#middle #item-display #right-cart #right-quantity {
+  height: 40px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+
+#middle #item-display #right-cart #right-quantity button {
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  width: 15px;
+  cursor: pointer;
+}
+
+#middle #item-display #right-cart #right-quantity button:hover:not(:disabled) {
+  color: grey;
+}
+
+#middle #item-display #right-cart .add-to-cart {
+  font-size: 15px;
+  background-color: rgb(255, 222, 37);
+  color: rgb(11, 0, 73);
+  border: none;
+  width: 250px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#middle #item-display #right-cart .add-to-cart:hover {
+  color: rgb(43, 37, 73);
+  box-shadow: 0 0 15px rgba(255, 222, 37, 0.8);
+}
+
+#middle #item-display #right-cart .add-to-cart:active {
+  color: rgb(43, 37, 73);
+  box-shadow: inset 0 0 15px rgba(201, 172, 11, 0.7);
+  transform: scale(0.98);
+  transition: all 0.1s;
+}
+
+#middle #item-display #right-cart #right-quantity span {
+  font-size: 18px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  width: 35px;
 }

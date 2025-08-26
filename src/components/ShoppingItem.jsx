@@ -22,7 +22,7 @@ export default function ShoppingItem({ shoppingItem, cart, setCart }) {
               <span>1</span>
               <button>+</button>
             </div>
-            <button>ADD TO CART</button>
+            <button className="add-to-cart">ADD TO CART</button>
           </div>
         </div>
       </div>
