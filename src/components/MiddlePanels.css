@@ -43,7 +43,8 @@
   right: 12px;
   font-size: 30px;
   font-family: Garamond;
-  color: rgb(255, 174, 0);
+  color: white;
+  text-shadow: #ffcc00 1px 0 10px;
   background-color: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(10px); /* frosted glass */
   -webkit-backdrop-filter: blur(10px);
@@ -135,11 +136,11 @@
   background-color: transparent;
   border: none;
   width: 15px;
-  cursor: pointer;
 }
 
 #middle #item-display #right-cart #right-quantity button:hover:not(:disabled) {
   color: grey;
+  cursor: pointer;
 }
 
 #middle #item-display #right-cart .add-to-cart {
