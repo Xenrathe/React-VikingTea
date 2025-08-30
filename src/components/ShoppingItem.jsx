@@ -1,3 +1,12 @@
+// NEED TO ADJUST THIS FUNCTION SO IT ONLY USES ONE OBJECT FOR A SINGLE TEA / ITEM
+function AddToCart(shoppingItem, cart, setCart) {
+  const newCart = [
+    ...cart,
+    { Name: shoppingItem.Name, Count: shoppingItem.Count },
+  ];
+  setCart(newCart);
+}
+
 export default function ShoppingItem({
   shoppingItem,
   setShoppingItem,
@@ -44,7 +53,12 @@ export default function ShoppingItem({
                 +
               </button>
             </div>
-            <button className="add-to-cart">ADD TO CART</button>
+            <button
+              className="add-to-cart"
+              onClick={() => AddToCart(shoppingItem, cart, setCart)}
+            >
+              ADD TO CART
+            </button>
           </div>
         </div>
       </div>

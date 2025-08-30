@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import BottomBar from "./components/BottomBar.jsx";
 import { Outlet } from "react-router-dom";
