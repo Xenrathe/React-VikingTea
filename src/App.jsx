@@ -6,6 +6,7 @@ import ShoppingItem from "./components/ShoppingItem.jsx";
 import TopBar from "./components/TopBar.jsx";
 import "./App.css";
 import "./components/MiddlePanels.css";
+import TeaSpice from "./assets/tea-spice.jpg";
 
 function App() {
   const [cart, setCart] = useState([{ Name: "Sencha", Count: 3 }]);
@@ -15,6 +16,7 @@ function App() {
     <div className="app">
       <TopBar cart={cart} setCart={setCart} />
       <div id="middle">
+        <img id="default-bg" src={TeaSpice} />
         <Outlet context={{ setShoppingItem }} />
         <ShoppingItem
           shoppingItem={shoppingItem}

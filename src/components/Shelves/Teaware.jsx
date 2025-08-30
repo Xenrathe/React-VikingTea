@@ -12,76 +12,76 @@ import GaiwanTeapot from "../../assets/Teaware/GaiwanTeapot.webp";
 
 import { useOutletContext } from "react-router-dom";
 
-export const teaware = [
+const teaware = [
   {
     Name: "Katakuchi Tea Bowl",
     Image: KatakuchiTeaBowl,
-    Adjectives: "ceramic • 200ml",
+    Adjectives: "clay • 625ml",
     Description:
-      "A traditional katakuchi bowl with a spouted lip, perfect for sharing tea with elegance and ease.",
+      "A humble clay vessel, wide-lipped for pouring, used by northern brewers when sharing leaf-steeped wisdom around the longfire.",
   },
   {
-    Name: "Takasuke Tokoname Kyusu Teapot",
+    Name: "Takasuke Tokoname",
     Image: TakasukeTokonameKyusuTeapot,
-    Adjectives: "tokoname clay • 300ml",
+    Adjectives: "red clay • 270ml",
     Description:
-      "Handcrafted by master Takasuke, this kyusu teapot embodies balance, refinement, and centuries of Tokoname tradition.",
+      "Forged from Tokoname earth, this side-handled kyusu pours swift and sure, as if built for warriors thirsty after battle.",
   },
   {
-    Name: "Cera Mesh Kyusu Teapot",
+    Name: "Cera-Mesh Kyusu",
     Image: CeraMeshKyusuTeapot,
-    Adjectives: "ceramic • 320ml",
+    Adjectives: "clay • 290ml",
     Description:
-      "A sleek kyusu with a fine mesh filter, ideal for brewing delicate leaves while retaining clarity of flavor.",
+      "A natural clay kyusu with cunning mesh, filtering leaves like a shield wall against chaff, fit for precise brewing under watchful eyes.",
   },
   {
-    Name: "Kikumaru Tokoname Sasame Kyusu",
+    Name: "Kikumaru Tokoname",
     Image: KikumaruTokonameSasameKyusuTeapot,
-    Adjectives: "tokoname clay • 280ml",
+    Adjectives: "clay • 250ml",
     Description:
-      "Kikumaru’s sasame-style kyusu, crafted for even flow and smooth pouring, revered among seasoned brewers.",
+      "Carved with fine sasame strainer, this Tokoname teapot serves as a chieftain's tool, pouring clear draughts for honored guests.",
   },
   {
-    Name: "Genyu Hohin Teapot",
+    Name: "Genyu Hohin",
     Image: GenyuHohinTeapot,
-    Adjectives: "porcelain • 180ml",
+    Adjectives: "earthenware • 120ml",
     Description:
-      "A handleless hohin teapot by Genyu, designed for refined hand-pouring and meditative tea sessions.",
+      "A lidless hohin for delicate brews, its glazed black earthenware gleams like shadows over fjord-waters, steeping leaves with quiet strength.",
   },
   {
-    Name: "Wabi-Sabi Raku Matcha Bowl",
+    Name: "Wabi-Sabi Raku Bowl",
     Image: WabiSabiRakuMatchaBowl,
-    Adjectives: "raku clay • 450ml",
+    Adjectives: "red clay • 625ml",
     Description:
-      "This rustic raku matcha bowl embraces imperfection, embodying the wabi-sabi spirit of the tea ceremony.",
+      "Dark and rugged, this matcha bowl embodies wabi-sabi—like a weathered shield, imperfect yet noble in battle and ceremony alike.",
   },
   {
-    Name: "Kinto Hasami Porcelain Set",
+    Name: "Kinto Hasami White",
     Image: KintoHasamiPorcelainSet,
-    Adjectives: "porcelain • 400ml",
+    Adjectives: "porcelain • 600/125ml",
     Description:
-      "A clean and modern Hasami porcelain set by Kinto, merging minimalist design with functional beauty.",
+      "A clean porcelain set, bright as new snow on mountain peaks, carried by jarls who prize harmony at the feast table.",
   },
   {
-    Name: "Kinto Hasami Porcelain Black Set",
+    Name: "Kinto Hasami Black",
     Image: KintoHasamiPorcelainBlackSet,
-    Adjectives: "black porcelain • 400ml",
+    Adjectives: "porcelain • 600/125ml",
     Description:
-      "A striking black Hasami porcelain set by Kinto, balancing modern aesthetics with timeless craftsmanship.",
+      "Dark-hued porcelain for somber rites, its surface recalling night seas where longships sail beneath unseen stars.",
   },
   {
     Name: "Matcha Pouring Bowl",
     Image: MatchaPouringBowl,
-    Adjectives: "ceramic • 500ml",
+    Adjectives: "porcelain • 625ml",
     Description:
-      "A wide and sturdy pouring bowl for whisking and serving matcha with ease and grace.",
+      "Wide and sturdy with a spout for pouring, this bowl stands ready like a Viking ladle, serving forth the green strength of matcha.",
   },
   {
     Name: "Gaiwan Teapot",
     Image: GaiwanTeapot,
     Adjectives: "porcelain • 150ml",
     Description:
-      "The classic gaiwan teapot, versatile and elegant, used for gongfu brewing and intimate tea exploration.",
+      "A lidded porcelain cup, wielded with skillful fingers like a warrior's dagger, brewing swift steeps in close company.",
   },
 ];
 

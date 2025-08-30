@@ -1,11 +1,7 @@
 export default function ShoppingItem({ shoppingItem, cart, setCart }) {
   if (shoppingItem == null) {
     // DEFAULT VIEW (no tea selected yet)
-    return (
-      <div id="item-display" className="panel">
-        TEA DESCRIPTION
-      </div>
-    );
+    return <div id="item-display" className="panel default"></div>;
   } else {
     return (
       <div id="item-display" className="panel">

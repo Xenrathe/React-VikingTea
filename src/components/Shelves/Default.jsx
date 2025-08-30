@@ -1,3 +1,7 @@
-export default function Gyokuro() {
-  return <div className="tea-shelf panel">Choose a tea category above!</div>;
+export default function Default() {
+  return (
+    <div className="tea-shelf default panel">
+      <div className="description">Raid our teas by selecting a category!</div>
+    </div>
+  );
 }
