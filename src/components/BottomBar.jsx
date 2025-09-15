@@ -12,7 +12,7 @@ import Wave3 from "../assets/Wave3.png";
 import Wave4 from "../assets/Wave4.png";
 import Wave from "./Wave";
 
-export default function BottomBar({ cart }) {
+export default function BottomBar({ cart, floatingItems, setFloatingItems }) {
   const currentCount = cartCount(cart);
 
   let boatImg = BoatWDogVVLarge;
@@ -29,7 +29,12 @@ export default function BottomBar({ cart }) {
         <Wave image={Wave3} speed={4} />
         <Wave image={Wave2} speed={6} />
         <img id="boat-img" src={boatImg} />
-        <Wave image={Wave1} speed={8} syncBoat={true} />
+        {floatingItems.map((floatingItem) => {
+          if (!floatingItem.inBoat) {
+            return (<img src={floatingItem.img} id={`FI-${floatingItem.id}`} className="floating-item"/>)
+          }
+        })}
+        <Wave image={Wave1} speed={8} floatingItems={floatingItems} setFloatingItems={setFloatingItems} syncBoat={true} />
       </div>
     </div>
   );

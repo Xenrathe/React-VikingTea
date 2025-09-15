@@ -42,3 +42,9 @@
   top: -15px;
   height: 480px;
 }
+
+.floating-item {
+  position: absolute;
+  width: 100px;
+  bottom: -10px;
+}
