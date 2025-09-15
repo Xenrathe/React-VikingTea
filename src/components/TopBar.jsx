@@ -1,20 +1,7 @@
 import "./TopBar.css";
 import boat from "../assets/boatB.png";
 import { NavLink } from "react-router-dom";
-
-//cart is an array of objects
-// [{Name: "Gyuokuro", Count: 2}, {Name: "Sencha", Count: 3}]
-function cartCount(cart) {
-  let totalCount = 0;
-
-  if (cart) {
-    cart.forEach((obj) => {
-      totalCount += obj.Count;
-    });
-  }
-
-  return totalCount;
-}
+import { cartCount } from "./UtilityFunctions";
 
 export default function TopBar({ cart, setCart }) {
   return (

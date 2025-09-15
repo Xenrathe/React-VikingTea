@@ -1,9 +1,24 @@
-// NEED TO ADJUST THIS FUNCTION SO IT ONLY USES ONE OBJECT FOR A SINGLE TEA / ITEM
 function AddToCart(shoppingItem, cart, setCart) {
-  const newCart = [
-    ...cart,
-    { Name: shoppingItem.Name, Count: shoppingItem.Count },
-  ];
+  const newCart = [];
+
+  //we want the same item to only have a single object
+  let repeatItem = false;
+  cart.forEach((item) => {
+    if (item.Name == shoppingItem.Name) {
+      newCart.push({
+        Name: shoppingItem.Name,
+        Count: item.Count + shoppingItem.Count,
+      });
+      repeatItem = true;
+    } else {
+      newCart.push(item);
+    }
+  });
+
+  if (!repeatItem)
+    newCart.push({ Name: shoppingItem.Name, Count: shoppingItem.Count });
+
+  console.log(newCart);
   setCart(newCart);
 }
 

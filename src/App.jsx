@@ -25,7 +25,7 @@ function App() {
           setCart={setCart}
         />
       </div>
-      <BottomBar />
+      <BottomBar cart={cart} />
     </div>
   );
 }
