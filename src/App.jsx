@@ -29,7 +29,6 @@ function App() {
         />
       </div>
       <BottomBar
-        cart={cart}
         floatingItems={floatingItems}
         setFloatingItems={setFloatingItems}
       />

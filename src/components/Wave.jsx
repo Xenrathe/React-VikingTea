@@ -1,5 +1,92 @@
 import { useEffect, useRef, useState } from "react";
 
+function animateBoat(x1Ref, cycleLength) {
+  const boat = document.getElementById("boat-img");
+
+  if (boat) {
+    //adjust as needed by experimentation
+    const boatYMin = -40;
+    const boatYMax = 15;
+    const boatRotMin = -7;
+    const boatRotMax = 5;
+
+    //calculations
+    const progress = (((-x1Ref.current % cycleLength) + cycleLength) % cycleLength) / cycleLength;
+    const angle = progress * 2 * Math.PI;
+    const boatY = boatYMax + ((boatYMin - boatYMax) / 2) * (1 - Math.cos(angle));
+    const boatRot = boatRotMax + ((boatRotMin - boatRotMax) / 2) * (1 - Math.cos(angle));
+
+    boat.style.transform = `translateY(${boatY}px) rotateZ(${boatRot}deg)`;
+  }
+}
+
+function animateFloatingItems(setFloatingItems, elementCacheRef, floatingItemsRef, positionsRef, offsetsRef, cycleLength, imgWidth, speed ) {
+  const items = floatingItemsRef.current || [];
+
+  items.forEach((item) => {
+    if (item.inBoat) return;
+
+    const id = item.id;
+    let pos = positionsRef.current.get(id);
+    if (pos === undefined) {
+      pos = imgWidth + 50;
+      positionsRef.current.set(id, pos);
+    }
+
+    pos -= speed / 2; // half-speed, looks better, like waves are pushing item
+    positionsRef.current.set(id, pos);
+
+    // cache the DOM element for item if not already found
+    let elem = elementCacheRef.current.get(id);
+    if (!elem) {
+      elem = document.getElementById(`FI-${id}`);
+      if (elem) elementCacheRef.current.set(id, elem);
+    }
+
+    // arrives at boat threshold, mark inBoat
+    const arrivalX = 350; //represents middle of boat
+    if (pos <= arrivalX) {
+      setFloatingItems((prev) => {
+        const next = prev.map((it) =>
+          it.id === id ? { ...it, inBoat: true } : it
+        );
+        floatingItemsRef.current = next;
+        return next;
+      });
+
+      positionsRef.current.delete(id);
+      if (elem) {
+        elem.style.display = "none";
+      }
+    } else {
+      if (elem) {
+        const progress =
+          ((((imgWidth - pos - offsetsRef.current.get(id)) %
+            cycleLength) +
+            cycleLength) %
+            cycleLength) /
+          cycleLength;
+        const offset = (165 / 180) * Math.PI;
+        const angle = progress * 2 * Math.PI - offset;
+
+        const itemYMin = -35;
+        const itemYMax = 60;
+        const itemRotMin = -20;
+        const itemRotMax = 20;
+
+        const itemY =
+          itemYMax + ((itemYMin - itemYMax) / 2) * (1 - Math.cos(angle));
+        const itemRot =
+          itemRotMax +
+          ((itemRotMin - itemRotMax) / 2) *
+            (1 - Math.cos(angle + Math.PI / 2));
+
+        elem.style.transform = `translateX(${pos}px) translateY(${itemY}px) rotateZ(${itemRot}deg)`;
+      }
+    }
+  });
+}
+
 export default function Wave({
   image,
   speed,
@@ -75,6 +162,9 @@ export default function Wave({
     x1Ref.current = 0;
     x2Ref.current = imgWidth;
 
+    //cycleLength depends on image, if you change from Wave1.png (which has 2 waves/image), this may change
+    const cycleLength = imgWidth / 2;
+
     // cancel any existing loop
     if (rafRef.current) {
       cancelAnimationFrame(rafRef.current);
@@ -98,95 +188,14 @@ export default function Wave({
       if (img2Ref.current)
         img2Ref.current.style.transform = `translateX(${x2Ref.current}px)`;
 
-      // the boat sync
+      // the boat animation
       if (syncBoat) {
-        const boat = document.getElementById("boat-img");
-        if (boat) {
-          const boatYMin = -40;
-          const boatYMax = 15;
-          const boatRotMin = -7;
-          const boatRotMax = 5;
-          const cycleLength = imgWidth / 2;
-          let progress =
-            (((-x1Ref.current % cycleLength) + cycleLength) % cycleLength) /
-            cycleLength;
-          const angle = progress * 2 * Math.PI;
-          const boatY =
-            boatYMax + ((boatYMin - boatYMax) / 2) * (1 - Math.cos(angle));
-          const boatRot =
-            boatRotMax +
-            ((boatRotMin - boatRotMax) / 2) * (1 - Math.cos(angle));
-          boat.style.transform = `translateY(${boatY}px) rotateZ(${boatRot}deg)`;
-        }
+        animateBoat(x1Ref, cycleLength);
       }
 
-      // floating items
+      // floating item animation
       if (setFloatingItems) {
-        const items = floatingItemsRef.current || [];
-        const cycleLength = imgWidth / 2;
-
-        items.forEach((item) => {
-          if (item.inBoat) return;
-
-          const id = item.id;
-          let pos = positionsRef.current.get(id);
-          if (pos === undefined) {
-            pos = imgWidth + 50;
-            positionsRef.current.set(id, pos);
-          }
-
-          pos -= speed / 2; // item travels at half speed of wave
-          positionsRef.current.set(id, pos);
-
-          // cache the DOM element for item if not already found
-          let elem = elementCacheRef.current.get(id);
-          if (!elem) {
-            elem = document.getElementById(`FI-${id}`);
-            if (elem) elementCacheRef.current.set(id, elem);
-          }
-
-          // arrives at boat threshold, mark inBoat
-          const arrivalX = 350;
-          if (pos <= arrivalX) {
-            setFloatingItems((prev) => {
-              const next = prev.map((it) =>
-                it.id === id ? { ...it, inBoat: true } : it
-              );
-              floatingItemsRef.current = next;
-              return next;
-            });
-
-            positionsRef.current.delete(id);
-            if (elem) {
-              elem.style.display = "none";
-            }
-          } else {
-            if (elem) {
-              const progress =
-                ((((imgWidth - pos - offsetsRef.current.get(id)) %
-                  cycleLength) +
-                  cycleLength) %
-                  cycleLength) /
-                cycleLength;
-              const offset = (165 / 180) * Math.PI;
-              const angle = progress * 2 * Math.PI - offset;
-
-              const itemYMin = -35;
-              const itemYMax = 60;
-              const itemRotMin = -20;
-              const itemRotMax = 20;
-
-              const itemY =
-                itemYMax + ((itemYMin - itemYMax) / 2) * (1 - Math.cos(angle));
-              const itemRot =
-                itemRotMax +
-                ((itemRotMin - itemRotMax) / 2) *
-                  (1 - Math.cos(angle + Math.PI / 2));
-
-              elem.style.transform = `translateX(${pos}px) translateY(${itemY}px) rotateZ(${itemRot}deg)`;
-            }
-          }
-        });
+        animateFloatingItems(setFloatingItems, elementCacheRef, floatingItemsRef, positionsRef, offsetsRef, cycleLength, imgWidth, speed);
       }
 
       rafRef.current = requestAnimationFrame(animate);

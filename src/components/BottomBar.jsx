@@ -5,15 +5,15 @@ import BoatWDogMed from "../assets/BoatWDogTM.png";
 import BoatWDogLarge from "../assets/BoatWDogTL.png";
 import BoatWDogVLarge from "../assets/BoatWDogTLL.png";
 import BoatWDogVVLarge from "../assets/BoatWDogTLLL.png";
-import { cartCount } from "./UtilityFunctions";
+import { boatCount } from "./UtilityFunctions";
 import Wave1 from "../assets/Wave1.png";
 import Wave2 from "../assets/Wave2.png";
 import Wave3 from "../assets/Wave3.png";
 import Wave4 from "../assets/Wave4.png";
 import Wave from "./Wave";
 
-export default function BottomBar({ cart, floatingItems, setFloatingItems }) {
-  const currentCount = cartCount(cart);
+export default function BottomBar({ floatingItems, setFloatingItems }) {
+  const currentCount = boatCount(floatingItems);
 
   let boatImg = BoatWDogVVLarge;
   if (currentCount == 0) boatImg = BoatWDog;
@@ -35,6 +35,7 @@ export default function BottomBar({ cart, floatingItems, setFloatingItems }) {
               <img
                 src={floatingItem.img}
                 id={`FI-${floatingItem.id}`}
+                key={floatingItem.id}
                 className="floating-item"
               />
             );

@@ -11,3 +11,14 @@ export function cartCount(cart) {
 
   return totalCount;
 }
+
+//floatingItems is an array of objects
+// [{id: #, img: somesrc, waveOffset: ##, inBoat: false/true}]
+export function boatCount(floatingItems) {
+  
+  const initialVal = 0;
+  
+  const inBoatCount = floatingItems.filter((item) => item.inBoat == true).reduce((count, item) => count + item.cartCount, initialVal);
+
+  return inBoatCount;
+}

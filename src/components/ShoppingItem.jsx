@@ -1,4 +1,8 @@
 import largeTreasure from "../assets/Teasure-L.png";
+import mediumTreasure1 from "../assets/Teasure-M-1.png";
+import mediumTreasure2 from "../assets/Teasure-M-2.png";
+import smallTreasure1 from "../assets/Teasure-S-1.png";
+import smallTreasure2 from "../assets/Teasure-S-2.png";
 
 function AddToCart(
   shoppingItem,
@@ -9,17 +13,27 @@ function AddToCart(
 ) {
   const newCart = [];
 
-  //add to floatingItems
+  //floating item stuff
+  let floatingImg = largeTreasure;
+  if (shoppingItem.Count == 1) {
+    if (Math.random() > 0.5) floatingImg = smallTreasure1;
+    else floatingImg = smallTreasure2;
+  } 
+  else if (shoppingItem.Count == 2) {
+    if (Math.random() > 0.5) floatingImg = mediumTreasure1;
+    else floatingImg = mediumTreasure2;
+  } 
   const newFloatingItem = {
     id: floatingItems.length,
-    img: largeTreasure,
+    cartCount: shoppingItem.Count,
+    img: floatingImg,
     waveOffset: null,
     inBoat: false,
   };
   let newFloatingItems = [...floatingItems];
   newFloatingItems.push(newFloatingItem);
-  console.log(newFloatingItems);
   setFloatingItems(newFloatingItems);
+  //end floating item stuff
 
   //we want the same item to only have a single object
   let repeatItem = false;
