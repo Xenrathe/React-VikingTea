@@ -7,14 +7,11 @@ import TopBar from "./components/TopBar.jsx";
 import "./App.css";
 import "./components/MiddlePanels.css";
 import TeaSpice from "./assets/tea-spice.jpg";
-import largeTreasure from "./assets/Teasure-L.png";
 
 function App() {
   const [cart, setCart] = useState([]);
   const [shoppingItem, setShoppingItem] = useState(null);
-
-  const testFloatingItem = {id: 0, img: largeTreasure, yPos: null, inBoat: false}
-  const [floatingItems, setFloatingItems] = useState([testFloatingItem]);
+  const [floatingItems, setFloatingItems] = useState([]);
 
   return (
     <div className="app">
@@ -27,9 +24,15 @@ function App() {
           setShoppingItem={setShoppingItem}
           cart={cart}
           setCart={setCart}
+          floatingItems={floatingItems}
+          setFloatingItems={setFloatingItems}
         />
       </div>
-      <BottomBar cart={cart} floatingItems={floatingItems} setFloatingItems={setFloatingItems} />
+      <BottomBar
+        cart={cart}
+        floatingItems={floatingItems}
+        setFloatingItems={setFloatingItems}
+      />
     </div>
   );
 }

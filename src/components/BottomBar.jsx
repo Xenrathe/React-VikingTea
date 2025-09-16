@@ -31,10 +31,22 @@ export default function BottomBar({ cart, floatingItems, setFloatingItems }) {
         <img id="boat-img" src={boatImg} />
         {floatingItems.map((floatingItem) => {
           if (!floatingItem.inBoat) {
-            return (<img src={floatingItem.img} id={`FI-${floatingItem.id}`} className="floating-item"/>)
+            return (
+              <img
+                src={floatingItem.img}
+                id={`FI-${floatingItem.id}`}
+                className="floating-item"
+              />
+            );
           }
         })}
-        <Wave image={Wave1} speed={8} floatingItems={floatingItems} setFloatingItems={setFloatingItems} syncBoat={true} />
+        <Wave
+          image={Wave1}
+          speed={8}
+          floatingItems={floatingItems}
+          setFloatingItems={setFloatingItems}
+          syncBoat={true}
+        />
       </div>
     </div>
   );

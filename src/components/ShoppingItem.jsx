@@ -1,5 +1,25 @@
-function AddToCart(shoppingItem, cart, setCart) {
+import largeTreasure from "../assets/Teasure-L.png";
+
+function AddToCart(
+  shoppingItem,
+  cart,
+  setCart,
+  floatingItems,
+  setFloatingItems
+) {
   const newCart = [];
+
+  //add to floatingItems
+  const newFloatingItem = {
+    id: floatingItems.length,
+    img: largeTreasure,
+    waveOffset: null,
+    inBoat: false,
+  };
+  let newFloatingItems = [...floatingItems];
+  newFloatingItems.push(newFloatingItem);
+  console.log(newFloatingItems);
+  setFloatingItems(newFloatingItems);
 
   //we want the same item to only have a single object
   let repeatItem = false;
@@ -18,7 +38,6 @@ function AddToCart(shoppingItem, cart, setCart) {
   if (!repeatItem)
     newCart.push({ Name: shoppingItem.Name, Count: shoppingItem.Count });
 
-  console.log(newCart);
   setCart(newCart);
 }
 
@@ -27,6 +46,8 @@ export default function ShoppingItem({
   setShoppingItem,
   cart,
   setCart,
+  floatingItems,
+  setFloatingItems,
 }) {
   if (shoppingItem == null) {
     // DEFAULT VIEW (no tea selected yet)
@@ -70,7 +91,15 @@ export default function ShoppingItem({
             </div>
             <button
               className="add-to-cart"
-              onClick={() => AddToCart(shoppingItem, cart, setCart)}
+              onClick={() =>
+                AddToCart(
+                  shoppingItem,
+                  cart,
+                  setCart,
+                  floatingItems,
+                  setFloatingItems
+                )
+              }
             >
               ADD TO CART
             </button>
