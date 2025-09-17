@@ -20,7 +20,7 @@ function animateBoat(x1Ref, cycleLength) {
   }
 }
 
-function animateFloatingItems(setFloatingItems, elementCacheRef, floatingItemsRef, positionsRef, offsetsRef, cycleLength, imgWidth, speed ) {
+function animateFloatingItems(setFloatingItems, startLeafplosion, setStartLeafplosion, elementCacheRef, floatingItemsRef, positionsRef, offsetsRef, cycleLength, imgWidth, speed ) {
   const items = floatingItemsRef.current || [];
 
   items.forEach((item) => {
@@ -46,6 +46,7 @@ function animateFloatingItems(setFloatingItems, elementCacheRef, floatingItemsRe
     // arrives at boat threshold, mark inBoat
     const arrivalX = 350; //represents middle of boat
     if (pos <= arrivalX) {
+      initializeLeafplosion(startLeafplosion, setStartLeafplosion);
       setFloatingItems((prev) => {
         const next = prev.map((it) =>
           it.id === id ? { ...it, inBoat: true } : it
@@ -87,11 +88,24 @@ function animateFloatingItems(setFloatingItems, elementCacheRef, floatingItemsRe
   });
 }
 
+function initializeLeafplosion(startLeafplosion, setStartLeafplosion) {
+
+  // only show a leafplosion if not one already happening
+  // may eventually want to upgrade this into each leafplosion being a seperate dom item
+  // rather than just toggling on / off a single one
+  if (!startLeafplosion) {
+    setStartLeafplosion(true);
+    setTimeout(() => setStartLeafplosion(false), 9000); // matches animation duration
+  }
+}
+
 export default function Wave({
   image,
   speed,
   floatingItems = [],
   setFloatingItems = null,
+  startLeafplosion = false,
+  setStartLeafplosion = null,
   syncBoat = false,
 }) {
   const img1Ref = useRef(null);
@@ -172,10 +186,11 @@ export default function Wave({
     }
 
     const animate = () => {
+
+      // animating the wave image
       x1Ref.current -= speed;
       x2Ref.current -= speed;
 
-      // the wave images
       if (x1Ref.current <= -imgWidth) {
         x1Ref.current = x2Ref.current + imgWidth;
       }
@@ -195,7 +210,7 @@ export default function Wave({
 
       // floating item animation
       if (setFloatingItems) {
-        animateFloatingItems(setFloatingItems, elementCacheRef, floatingItemsRef, positionsRef, offsetsRef, cycleLength, imgWidth, speed);
+        animateFloatingItems(setFloatingItems, startLeafplosion, setStartLeafplosion, elementCacheRef, floatingItemsRef, positionsRef, offsetsRef, cycleLength, imgWidth, speed);
       }
 
       rafRef.current = requestAnimationFrame(animate);
