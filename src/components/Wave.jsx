@@ -11,16 +11,31 @@ function animateBoat(x1Ref, cycleLength) {
     const boatRotMax = 5;
 
     //calculations
-    const progress = (((-x1Ref.current % cycleLength) + cycleLength) % cycleLength) / cycleLength;
+    const progress =
+      (((-x1Ref.current % cycleLength) + cycleLength) % cycleLength) /
+      cycleLength;
     const angle = progress * 2 * Math.PI;
-    const boatY = boatYMax + ((boatYMin - boatYMax) / 2) * (1 - Math.cos(angle));
-    const boatRot = boatRotMax + ((boatRotMin - boatRotMax) / 2) * (1 - Math.cos(angle));
+    const boatY =
+      boatYMax + ((boatYMin - boatYMax) / 2) * (1 - Math.cos(angle));
+    const boatRot =
+      boatRotMax + ((boatRotMin - boatRotMax) / 2) * (1 - Math.cos(angle));
 
     boat.style.transform = `translateY(${boatY}px) rotateZ(${boatRot}deg)`;
   }
 }
 
-function animateFloatingItems(setFloatingItems, startLeafplosion, setStartLeafplosion, elementCacheRef, floatingItemsRef, positionsRef, offsetsRef, cycleLength, imgWidth, speed ) {
+function animateFloatingItems(
+  setFloatingItems,
+  startLeafplosion,
+  setStartLeafplosion,
+  elementCacheRef,
+  floatingItemsRef,
+  positionsRef,
+  offsetsRef,
+  cycleLength,
+  imgWidth,
+  speed
+) {
   const items = floatingItemsRef.current || [];
 
   items.forEach((item) => {
@@ -62,8 +77,7 @@ function animateFloatingItems(setFloatingItems, startLeafplosion, setStartLeafpl
     } else {
       if (elem) {
         const progress =
-          ((((imgWidth - pos - offsetsRef.current.get(id)) %
-            cycleLength) +
+          ((((imgWidth - pos - offsetsRef.current.get(id)) % cycleLength) +
             cycleLength) %
             cycleLength) /
           cycleLength;
@@ -79,8 +93,7 @@ function animateFloatingItems(setFloatingItems, startLeafplosion, setStartLeafpl
           itemYMax + ((itemYMin - itemYMax) / 2) * (1 - Math.cos(angle));
         const itemRot =
           itemRotMax +
-          ((itemRotMin - itemRotMax) / 2) *
-            (1 - Math.cos(angle + Math.PI / 2));
+          ((itemRotMin - itemRotMax) / 2) * (1 - Math.cos(angle + Math.PI / 2));
 
         elem.style.transform = `translateX(${pos}px) translateY(${itemY}px) rotateZ(${itemRot}deg)`;
       }
@@ -89,13 +102,12 @@ function animateFloatingItems(setFloatingItems, startLeafplosion, setStartLeafpl
 }
 
 function initializeLeafplosion(startLeafplosion, setStartLeafplosion) {
-
   // only show a leafplosion if not one already happening
   // may eventually want to upgrade this into each leafplosion being a seperate dom item
   // rather than just toggling on / off a single one
   if (!startLeafplosion) {
     setStartLeafplosion(true);
-    setTimeout(() => setStartLeafplosion(false), 9000); // matches animation duration
+    setTimeout(() => setStartLeafplosion(false), 1500); // matches animation duration
   }
 }
 
@@ -186,7 +198,6 @@ export default function Wave({
     }
 
     const animate = () => {
-
       // animating the wave image
       x1Ref.current -= speed;
       x2Ref.current -= speed;
@@ -210,7 +221,18 @@ export default function Wave({
 
       // floating item animation
       if (setFloatingItems) {
-        animateFloatingItems(setFloatingItems, startLeafplosion, setStartLeafplosion, elementCacheRef, floatingItemsRef, positionsRef, offsetsRef, cycleLength, imgWidth, speed);
+        animateFloatingItems(
+          setFloatingItems,
+          startLeafplosion,
+          setStartLeafplosion,
+          elementCacheRef,
+          floatingItemsRef,
+          positionsRef,
+          offsetsRef,
+          cycleLength,
+          imgWidth,
+          speed
+        );
       }
 
       rafRef.current = requestAnimationFrame(animate);

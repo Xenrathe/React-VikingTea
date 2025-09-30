@@ -49,9 +49,9 @@
   bottom: 6px;
 }
 
-.leafplosion {
+.firework {
   position: absolute;
-  top: 200px;
+  top: 100px;
   left: 350px;
   width: 0;
   height: 0;
@@ -59,32 +59,69 @@
   z-index: 10;
 }
 
-.leaf {
+.flash {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 10px;
   height: 10px;
-  background: linear-gradient(45deg, #6aaf47, #d4b048);
-  border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
-  transform: scale(0);
-  opacity: 0;
-  z-index: 10;
-  animation: leaf-burst 9000ms ease-out forwards;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #fff,
+    rgba(255, 255, 0, 0.6),
+    transparent
+  );
+  transform: translate(-50%, -50%) scale(0);
+  animation: flash-burst 0.4s ease-out forwards;
+  z-index: 9;
 }
 
-.leaf:nth-child(1) { animation-delay: 0ms; transform-origin: 0 -40px; }
-.leaf:nth-child(2) { animation-delay: 20ms; transform-origin: 40px -20px; }
-.leaf:nth-child(3) { animation-delay: 40ms; transform-origin: -40px -20px; }
-
-@keyframes leaf-burst {
+@keyframes flash-burst {
   0% {
-    transform: scale(0) translate(0,0) rotate(0deg);
+    transform: translate(-50%, -50%) scale(0);
     opacity: 1;
   }
-  60% {
-    transform: scale(1) translate(var(--tx, 60px), var(--ty, -60px)) rotate(90deg);
+  50% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0.8;
   }
   100% {
-    transform: scale(0.8) translate(var(--tx, 80px), var(--ty, -80px)) rotate(180deg);
+    transform: translate(-50%, -50%) scale(6);
     opacity: 0;
+  }
+}
+
+.particle {
+  --angle: 0deg;
+  --distance: 0px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: radial-gradient(circle, #fff, rgb(60, 255, 0), rgb(255, 153, 0));
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0px)
+    scaleY(0.5);
+  opacity: 1;
+
+  animation: firework-burst 1.5s ease-out forwards;
+}
+
+@keyframes firework-burst {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0px)
+      scaleX(0.5);
+    opacity: 1;
+    filter: brightness(4);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(var(--angle))
+      translateX(calc(var(--distance) * 1.2)) scaleX(1.5);
+    opacity: 0;
+    filter: brightness(0.5);
   }
 }
