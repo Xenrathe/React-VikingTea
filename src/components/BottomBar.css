@@ -73,7 +73,7 @@
     transparent
   );
   transform: translate(-50%, -50%) scale(0);
-  animation: flash-burst 0.4s ease-out forwards;
+  animation: flash-burst 0.3s linear forwards;
   z-index: 9;
 }
 
@@ -82,12 +82,8 @@
     transform: translate(-50%, -50%) scale(0);
     opacity: 1;
   }
-  50% {
-    transform: translate(-50%, -50%) scale(4);
-    opacity: 0.8;
-  }
   100% {
-    transform: translate(-50%, -50%) scale(6);
+    transform: translate(-50%, -50%) scale(15);
     opacity: 0;
   }
 }
@@ -95,20 +91,21 @@
 .particle {
   --angle: 0deg;
   --distance: 0px;
+  --color: white;
 
   position: absolute;
   top: 0;
   left: 0;
-  width: 40px;
-  height: 3px;
-  background: radial-gradient(circle, #fff, rgb(60, 255, 0), rgb(255, 153, 0));
+  width: 4px;
+  height: 2px;
   border-radius: 50%;
+  border: 0px;
 
   transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0px)
     scaleY(0.5);
   opacity: 1;
 
-  animation: firework-burst 1.5s ease-out forwards;
+  animation: firework-burst 1.5s ease-out forwards
 }
 
 @keyframes firework-burst {
@@ -116,12 +113,17 @@
     transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0px)
       scaleX(0.5);
     opacity: 1;
-    filter: brightness(4);
+    background-color: white;
+    width: 4px;
+  }
+  60% {
+    background-color: var(--color);
   }
   100% {
     transform: translate(-50%, -50%) rotate(var(--angle))
       translateX(calc(var(--distance) * 1.2)) scaleX(1.5);
     opacity: 0;
-    filter: brightness(0.5);
+    background-color: var(--color);
+    width: 30px;
   }
 }
