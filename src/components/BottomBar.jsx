@@ -14,11 +14,10 @@ import Wave3 from "../assets/Wave3.png";
 import Wave4 from "../assets/Wave4.png";
 import Wave from "./Wave";
 
-function Firework(){
-
+function Firework({ id, fireworks, setFireworks }) {
   const fwcolors = [
     " #39ff14",
-    " #0066ff", 
+    " #0066ff",
     "rgb(255, 0, 0)",
     "rgb(229, 255, 0)",
   ];
@@ -30,8 +29,18 @@ function Firework(){
   const randomTop = `${125 - Math.random() * 100}px`;
   const randomLeft = `${375 - Math.random() * 100}px`;
 
+  setTimeout(() => {
+    let newfireworks = fireworks;
+    newfireworks[id] = false;
+    setFireworks({ newfireworks });
+  }, 1500); // matches animation duration
+
   return (
-    <div className="firework" style={{"top": randomTop, "left": randomLeft}}>
+    <div
+      className="firework"
+      id={`fw-${id}`}
+      style={{ top: randomTop, left: randomLeft }}
+    >
       <span className="flash" style={{ background: flashcolor }} />
 
       {Array.from({ length: 100 }).map((_, i) => {
@@ -50,11 +59,11 @@ function Firework(){
         );
       })}
     </div>
-  )
+  );
 }
 
 export default function BottomBar({ floatingItems, setFloatingItems }) {
-  const [startLeafplosion, setStartLeafplosion] = useState(false);
+  const [fireworks, setFireworks] = useState({});
 
   //boat image block (bigger treasure the more floatingItems arrived in boat)
   const currentCount = boatCount(floatingItems);
@@ -73,9 +82,18 @@ export default function BottomBar({ floatingItems, setFloatingItems }) {
         <Wave image={Wave2} speed={6} />
         <div id="boat">
           <img id="boat-img" src={boatImg} />
-          {startLeafplosion && (
-            <Firework/>
-          )}
+          {Object.keys(fireworks).map((fireworkID) => {
+            if (fireworks[fireworkID]) {
+              return (
+                <Firework
+                  id={fireworkID}
+                  key={fireworkID}
+                  fireworks={fireworks}
+                  setFireworks={setFireworks}
+                />
+              );
+            }
+          })}
         </div>
         <div id="floating-items">
           {floatingItems.map((floatingItem) => {
@@ -96,8 +114,8 @@ export default function BottomBar({ floatingItems, setFloatingItems }) {
           speed={8}
           floatingItems={floatingItems}
           setFloatingItems={setFloatingItems}
-          startLeafplosion={startLeafplosion}
-          setStartLeafplosion={setStartLeafplosion}
+          fireworks={fireworks}
+          setFireworks={setFireworks}
           syncBoat={true}
         />
       </div>

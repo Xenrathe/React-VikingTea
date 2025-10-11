@@ -26,8 +26,8 @@ function animateBoat(x1Ref, cycleLength) {
 
 function animateFloatingItems(
   setFloatingItems,
-  startLeafplosion,
-  setStartLeafplosion,
+  fireworks,
+  setFireworks,
   elementCacheRef,
   floatingItemsRef,
   positionsRef,
@@ -61,7 +61,7 @@ function animateFloatingItems(
     // arrives at boat threshold, mark inBoat
     const arrivalX = 350; //represents middle of boat
     if (pos <= arrivalX) {
-      initializeLeafplosion(startLeafplosion, setStartLeafplosion);
+      initializeFirework(fireworks, setFireworks);
       setFloatingItems((prev) => {
         const next = prev.map((it) =>
           it.id === id ? { ...it, inBoat: true } : it
@@ -101,14 +101,9 @@ function animateFloatingItems(
   });
 }
 
-function initializeLeafplosion(startLeafplosion, setStartLeafplosion) {
-  // only show a leafplosion if not one already happening
-  // may eventually want to upgrade this into each leafplosion being a seperate dom item
-  // rather than just toggling on / off a single one
-  if (!startLeafplosion) {
-    setStartLeafplosion(true);
-    setTimeout(() => setStartLeafplosion(false), 1500); // matches animation duration
-  }
+function initializeFirework(fireworks, setFireworks) {
+  const nextId = Object.keys(fireworks).length + 1;
+  setFireworks({ ...fireworks, [nextId]: true });
 }
 
 export default function Wave({
@@ -116,8 +111,8 @@ export default function Wave({
   speed,
   floatingItems = [],
   setFloatingItems = null,
-  startLeafplosion = false,
-  setStartLeafplosion = null,
+  fireworks = [],
+  setFireworks = null,
   syncBoat = false,
 }) {
   const img1Ref = useRef(null);
@@ -223,8 +218,8 @@ export default function Wave({
       if (setFloatingItems) {
         animateFloatingItems(
           setFloatingItems,
-          startLeafplosion,
-          setStartLeafplosion,
+          fireworks,
+          setFireworks,
           elementCacheRef,
           floatingItemsRef,
           positionsRef,
