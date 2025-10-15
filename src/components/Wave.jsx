@@ -61,7 +61,7 @@ function animateFloatingItems(
     // arrives at boat threshold, mark inBoat
     const arrivalX = 350; //represents middle of boat
     if (pos <= arrivalX) {
-      initializeFirework(fireworks, setFireworks);
+      initializeFirework(setFireworks);
       setFloatingItems((prev) => {
         const next = prev.map((it) =>
           it.id === id ? { ...it, inBoat: true } : it
@@ -101,9 +101,9 @@ function animateFloatingItems(
   });
 }
 
-function initializeFirework(fireworks, setFireworks) {
-  const nextId = Object.keys(fireworks).length + 1;
-  setFireworks({ ...fireworks, [nextId]: true });
+function initializeFirework(setFireworks) {
+  const nextId = crypto.randomUUID();
+  setFireworks((prev) => [...prev, { id: nextId }]);
 }
 
 export default function Wave({

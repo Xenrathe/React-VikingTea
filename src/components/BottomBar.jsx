@@ -1,6 +1,6 @@
 import "./BottomBar.css";
 import { boatCount } from "./UtilityFunctions";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import BoatWDog from "../assets/BoatWDog.png";
 import BoatWDogSmall from "../assets/BoatWDogTS.png";
@@ -14,56 +14,57 @@ import Wave3 from "../assets/Wave3.png";
 import Wave4 from "../assets/Wave4.png";
 import Wave from "./Wave";
 
-function Firework({ id, fireworks, setFireworks }) {
+function Firework({ id, onComplete }) {
   const fwcolors = [
-    " #39ff14",
-    " #0066ff",
-    "rgb(255, 0, 0)",
-    "rgb(229, 255, 0)",
+    "#39ff14",
+    "#ff7300ff",
+    "rgb(255,0,0)",
+    "rgba(255, 251, 0, 1)",
   ];
-  const randomNum = Math.floor(Math.random() * fwcolors.length);
-  const fwcolor = fwcolors[randomNum];
-  const flashcolor = `radial-gradient(circle,${fwcolor}, transparent)`;
+  const fwcolorRef = useRef(
+    fwcolors[Math.floor(Math.random() * fwcolors.length)]
+  );
+  const flashcolor = `radial-gradient(circle, ${fwcolorRef.current}, transparent)`;
 
-  // top is 100px +- 50px; left is 350px +- 50px;
-  const randomTop = `${125 - Math.random() * 100}px`;
-  const randomLeft = `${375 - Math.random() * 100}px`;
+  const topRef = useRef(130 - Math.random() * 100);
+  const leftRef = useRef(425 - Math.random() * 200);
 
-  setTimeout(() => {
-    let newfireworks = fireworks;
-    newfireworks[id] = false;
-    setFireworks({ newfireworks });
-  }, 1500); // matches animation duration
+  useEffect(() => {
+    const timer = setTimeout(onComplete, 1500);
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
+  const particleRefs = useRef(
+    Array.from({ length: 50 }).map(() => ({
+      angle: Math.random() * 360,
+      distance: 10 + Math.random() * 300,
+    }))
+  );
 
   return (
     <div
       className="firework"
       id={`fw-${id}`}
-      style={{ top: randomTop, left: randomLeft }}
+      style={{ top: topRef.current, left: leftRef.current }}
     >
       <span className="flash" style={{ background: flashcolor }} />
-
-      {Array.from({ length: 100 }).map((_, i) => {
-        const angle = Math.random() * 360; // random direction
-        const dist = 20 + Math.random() * 400; // random distance
-        return (
-          <span
-            key={i}
-            className="particle"
-            style={{
-              "--angle": `${angle}deg`,
-              "--distance": `${dist}px`,
-              "--color": fwcolor,
-            }}
-          />
-        );
-      })}
+      {particleRefs.current.map((p, i) => (
+        <span
+          key={i}
+          className="particle"
+          style={{
+            "--angle": `${p.angle}deg`,
+            "--distance": `${p.distance}px`,
+            "--color": fwcolorRef.current,
+          }}
+        />
+      ))}
     </div>
   );
 }
 
 export default function BottomBar({ floatingItems, setFloatingItems }) {
-  const [fireworks, setFireworks] = useState({});
+  const [fireworks, setFireworks] = useState([]);
 
   //boat image block (bigger treasure the more floatingItems arrived in boat)
   const currentCount = boatCount(floatingItems);
@@ -82,18 +83,15 @@ export default function BottomBar({ floatingItems, setFloatingItems }) {
         <Wave image={Wave2} speed={6} />
         <div id="boat">
           <img id="boat-img" src={boatImg} />
-          {Object.keys(fireworks).map((fireworkID) => {
-            if (fireworks[fireworkID]) {
-              return (
-                <Firework
-                  id={fireworkID}
-                  key={fireworkID}
-                  fireworks={fireworks}
-                  setFireworks={setFireworks}
-                />
-              );
-            }
-          })}
+          {fireworks.map((fw) => (
+            <Firework
+              key={fw.id}
+              id={fw.id}
+              onComplete={() =>
+                setFireworks((prev) => prev.filter((f) => f.id !== fw.id))
+              }
+            />
+          ))}
         </div>
         <div id="floating-items">
           {floatingItems.map((floatingItem) => {

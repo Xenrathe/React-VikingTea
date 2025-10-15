@@ -105,7 +105,7 @@
     scaleY(0.5);
   opacity: 1;
 
-  animation: firework-burst 1.5s ease-out forwards
+  animation: firework-burst 1.5s ease-out forwards;
 }
 
 @keyframes firework-burst {
@@ -118,12 +118,13 @@
   }
   60% {
     background-color: var(--color);
+    opacity: 1;
   }
   100% {
     transform: translate(-50%, -50%) rotate(var(--angle))
-      translateX(calc(var(--distance) * 1.2)) scaleX(1.5);
+      translateX(calc(var(--distance))) scaleX(1);
     opacity: 0;
     background-color: var(--color);
-    width: 30px;
+    width: 25px;
   }
 }
