@@ -112,7 +112,6 @@ export default function BottomBar({ floatingItems, setFloatingItems }) {
           speed={8}
           floatingItems={floatingItems}
           setFloatingItems={setFloatingItems}
-          fireworks={fireworks}
           setFireworks={setFireworks}
           syncBoat={true}
         />

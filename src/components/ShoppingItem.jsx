@@ -13,14 +13,14 @@ function AddToCart(
 ) {
   const newCart = [];
 
-  //floating item stuff
-  let floatingImg = largeTreasure;
+  // ***** FLOATING ITEM STUFF *******
+  let floatingImg = largeTreasure; //only one largetreasure image
   if (shoppingItem.Count == 1) {
-    if (Math.random() > 0.5) floatingImg = smallTreasure1;
+    if (Math.random() > 0.5) floatingImg = smallTreasure1; //randomly pick from 2 images
     else floatingImg = smallTreasure2;
   } 
   else if (shoppingItem.Count == 2) {
-    if (Math.random() > 0.5) floatingImg = mediumTreasure1;
+    if (Math.random() > 0.5) floatingImg = mediumTreasure1; //randomly pick from 2 images
     else floatingImg = mediumTreasure2;
   } 
   const newFloatingItem = {
@@ -33,7 +33,7 @@ function AddToCart(
   let newFloatingItems = [...floatingItems];
   newFloatingItems.push(newFloatingItem);
   setFloatingItems(newFloatingItems);
-  //end floating item stuff
+  // ***** END FLOATING ITEM STUFF *******
 
   //we want the same item to only have a single object
   let repeatItem = false;
@@ -41,6 +41,7 @@ function AddToCart(
     if (item.Name == shoppingItem.Name) {
       newCart.push({
         Name: shoppingItem.Name,
+        Image: shoppingItem.Image,
         Count: item.Count + shoppingItem.Count,
       });
       repeatItem = true;
@@ -50,7 +51,7 @@ function AddToCart(
   });
 
   if (!repeatItem)
-    newCart.push({ Name: shoppingItem.Name, Count: shoppingItem.Count });
+    newCart.push({ Name: shoppingItem.Name, Image: shoppingItem.Image, Count: shoppingItem.Count });
 
   setCart(newCart);
 }

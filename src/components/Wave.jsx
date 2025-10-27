@@ -26,7 +26,6 @@ function animateBoat(x1Ref, cycleLength) {
 
 function animateFloatingItems(
   setFloatingItems,
-  fireworks,
   setFireworks,
   elementCacheRef,
   floatingItemsRef,
@@ -111,7 +110,6 @@ export default function Wave({
   speed,
   floatingItems = [],
   setFloatingItems = null,
-  fireworks = [],
   setFireworks = null,
   syncBoat = false,
 }) {
@@ -218,7 +216,6 @@ export default function Wave({
       if (setFloatingItems) {
         animateFloatingItems(
           setFloatingItems,
-          fireworks,
           setFireworks,
           elementCacheRef,
           floatingItemsRef,

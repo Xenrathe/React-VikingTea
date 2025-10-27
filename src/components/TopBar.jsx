@@ -1,11 +1,16 @@
 import "./TopBar.css";
 import boat from "../assets/boatB.png";
+import ShoppingCart from "./ShoppingCart";
 import { NavLink } from "react-router-dom";
 import { cartCount } from "./UtilityFunctions";
+import { useState } from "react";
 
 export default function TopBar({ cart, setCart }) {
+
+  const [ cartVis, setCartVis ] = useState(false);
+
   return (
-    <div id="top">
+    <div id="top-banner">
       <div id="announcement">Serving Tea to Taste Berserkers since 972</div>
       <nav>
         <div id="categories">
@@ -35,11 +40,12 @@ export default function TopBar({ cart, setCart }) {
           </NavLink>
         </div>
         <div id="icon-and-title">VIKING TEA</div>
-        <div id="cart">
+        <div id="cart" onClick={() => setCartVis(true)}>
           <img id="boat-cart" src={boat} />
           <span id="count-cart">{cartCount(cart)}</span>
         </div>
       </nav>
+      {cartVis && <ShoppingCart cart={cart} setCart={setCart} setCartVis={setCartVis} />}
     </div>
   );
 }
