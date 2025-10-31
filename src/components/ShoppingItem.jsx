@@ -16,13 +16,14 @@ function AddToCart(
   // ***** FLOATING ITEM STUFF *******
   let floatingImg = largeTreasure; //only one largetreasure image
   if (shoppingItem.Count == 1) {
-    if (Math.random() > 0.5) floatingImg = smallTreasure1; //randomly pick from 2 images
+    if (Math.random() > 0.5)
+      floatingImg = smallTreasure1; //randomly pick from 2 images
     else floatingImg = smallTreasure2;
-  } 
-  else if (shoppingItem.Count == 2) {
-    if (Math.random() > 0.5) floatingImg = mediumTreasure1; //randomly pick from 2 images
+  } else if (shoppingItem.Count == 2) {
+    if (Math.random() > 0.5)
+      floatingImg = mediumTreasure1; //randomly pick from 2 images
     else floatingImg = mediumTreasure2;
-  } 
+  }
   const newFloatingItem = {
     id: floatingItems.length,
     cartCount: shoppingItem.Count,
@@ -51,7 +52,11 @@ function AddToCart(
   });
 
   if (!repeatItem)
-    newCart.push({ Name: shoppingItem.Name, Image: shoppingItem.Image, Count: shoppingItem.Count });
+    newCart.push({
+      Name: shoppingItem.Name,
+      Image: shoppingItem.Image,
+      Count: shoppingItem.Count,
+    });
 
   setCart(newCart);
 }
@@ -78,7 +83,7 @@ export default function ShoppingItem({
           </div>
           <div id="right-description">{shoppingItem.Description}</div>
           <div id="right-cart">
-            <div id="right-quantity">
+            <div id="right-quantity" className="item-count-adjust">
               <button
                 disabled={shoppingItem.Count == 1}
                 onClick={() => {

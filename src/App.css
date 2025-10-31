@@ -59,3 +59,30 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+.item-count-adjust {
+  height: 40px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+
+.sc-item .info .item-count-adjust {
+  height: 16px;
+  width: 50px;
+  padding: 3px 5px;
+}
+
+.item-count-adjust button {
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  width: 15px;
+}
+
+.item-count-adjust button:hover:not(:disabled) {
+  color: grey;
+  cursor: pointer;
+}

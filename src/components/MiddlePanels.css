@@ -122,27 +122,6 @@
   margin-bottom: 20px;
 }
 
-#middle #item-display #right-cart #right-quantity {
-  height: 40px;
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px 10px;
-}
-
-#middle #item-display #right-cart #right-quantity button {
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  width: 15px;
-}
-
-#middle #item-display #right-cart #right-quantity button:hover:not(:disabled) {
-  color: grey;
-  cursor: pointer;
-}
-
 #middle #item-display #right-cart .add-to-cart {
   font-size: 15px;
   background-color: rgb(255, 222, 37);

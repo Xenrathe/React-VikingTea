@@ -6,8 +6,7 @@ import { cartCount } from "./UtilityFunctions";
 import { useState } from "react";
 
 export default function TopBar({ cart, setCart }) {
-
-  const [ cartVis, setCartVis ] = useState(false);
+  const [cartVis, setCartVis] = useState(false);
 
   return (
     <div id="top-banner">
@@ -40,12 +39,16 @@ export default function TopBar({ cart, setCart }) {
           </NavLink>
         </div>
         <div id="icon-and-title">VIKING TEA</div>
-        <div id="cart" onClick={() => setCartVis(true)}>
-          <img id="boat-cart" src={boat} />
-          <span id="count-cart">{cartCount(cart)}</span>
+        <div id="cart">
+          <img id="boat-cart" src={boat} onClick={() => setCartVis(true)} />
+          <span id="count-cart" onClick={() => setCartVis(true)}>
+            {cartCount(cart)}
+          </span>
         </div>
       </nav>
-      {cartVis && <ShoppingCart cart={cart} setCart={setCart} setCartVis={setCartVis} />}
+      {cartVis && (
+        <ShoppingCart cart={cart} setCart={setCart} setCartVis={setCartVis} />
+      )}
     </div>
   );
 }
