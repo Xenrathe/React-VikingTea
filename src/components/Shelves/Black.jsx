@@ -16,8 +16,9 @@ const teas = [
   {
     Name: "Doi Wawee Shai Hong",
     Image: DoiWaweeShaiHongSpringCake,
-    Pkgs: [{Cost: 3.99, Quantity: 100}],
+    Pkgs: [{ Cost: 8.0, Quantity: 100 }],
     Unit: "gram",
+    Route: "Black",
     Adjectives: "ancient • smoldering • steadfast",
     Description:
       "Forged from the high mists of Wawee, this black cake is pressed like a warrior's shield, carrying the smoky strength of the mountain clans.",
@@ -25,8 +26,9 @@ const teas = [
   {
     Name: "Earl Grey",
     Image: EarlGrey,
-    Pkgs: [{Cost: 3.99, Quantity: 100}],
+    Pkgs: [{ Cost: 4.0, Quantity: 100 }],
     Unit: "gram",
+    Route: "Black",
     Adjectives: "refined • storm-kissed • resolute",
     Description:
       "A noble black tea bound with bergamot's bright fire, said to be favored by jarls who rule beneath both thunder and crown.",
@@ -34,8 +36,9 @@ const teas = [
   {
     Name: "First Flush Chamong",
     Image: FirstFlushChamong,
-    Pkgs: [{Cost: 3.99, Quantity: 100}],
+    Pkgs: [{ Cost: 6.0, Quantity: 100 }],
     Unit: "gram",
+    Route: "Black",
     Adjectives: "bright • brisk • youthful",
     Description:
       "A Darjeeling spring leaf as fresh as a new blade, lively with the vigor of young warriors sworn to their first oath.",
@@ -43,8 +46,9 @@ const teas = [
   {
     Name: "Barrel-aged Chiang Dao",
     Image: WhiskeyBarrelChiangDao,
-    Pkgs: [{Cost: 3.99, Quantity: 100}],
+    Pkgs: [{ Cost: 9.0, Quantity: 100 }],
     Unit: "gram",
+    Route: "Black",
     Adjectives: "smoked • oaken • mighty",
     Description:
       "Rested in whiskey barrels beneath the dragon peaks, this black tea carries the depth of oak, the heat of spirit, and the weight of legend.",
@@ -52,8 +56,9 @@ const teas = [
   {
     Name: "Golden Yunnan",
     Image: GoldenYunnan,
-    Pkgs: [{Cost: 3.99, Quantity: 100}],
+    Pkgs: [{ Cost: 8.0, Quantity: 50 }],
     Unit: "gram",
+    Route: "Black",
     Adjectives: "radiant • molten • enduring",
     Description:
       "These golden buds gleam like treasure hoards beneath the mountain halls, pouring forth a liquor as rich as a king's ransom.",
@@ -61,8 +66,9 @@ const teas = [
   {
     Name: "Masala Chai",
     Image: MasalaChai,
-    Pkgs: [{Cost: 3.99, Quantity: 100}],
+    Pkgs: [{ Cost: 4.0, Quantity: 100 }],
     Unit: "gram",
+    Route: "Black",
     Adjectives: "fiery • spiced • triumphant",
     Description:
       "A caravan's bounty of spice and black leaf, brewed hot as a war-drum, warming shield-arms and battle-hearts alike.",
@@ -70,8 +76,9 @@ const teas = [
   {
     Name: "Rose Dian Hong",
     Image: RoseDianHong,
-    Pkgs: [{Cost: 3.99, Quantity: 100}],
+    Pkgs: [{ Cost: 4.0, Quantity: 100 }],
     Unit: "gram",
+    Route: "Black",
     Adjectives: "fragrant • alluring • valiant",
     Description:
       "Dian Hong entwined with rose petals — a drink for skalds and lovers, soft as dawn yet strong as the sword-arm.",
@@ -79,8 +86,9 @@ const teas = [
   {
     Name: "Yunnan Purple Buds",
     Image: YunnanPurpleBuds,
-    Pkgs: [{Cost: 3.99, Quantity: 100}],
+    Pkgs: [{ Cost: 7.0, Quantity: 50 }],
     Unit: "gram",
+    Route: "Black",
     Adjectives: "mystic • rare • commanding",
     Description:
       "Sprung from shadowed highlands, these purple buds brew a draught of deep power, fit for prophets and war-seers.",
@@ -88,8 +96,9 @@ const teas = [
   {
     Name: "Sweet Thai Iced Tea",
     Image: SweetThaiIcedTea,
-    Pkgs: [{Cost: 3.99, Quantity: 100}],
+    Pkgs: [{ Cost: 4.0, Quantity: 100 }],
     Unit: "gram",
+    Route: "Black",
     Adjectives: "smooth • honeyed • jovial",
     Description:
       "A feast-hall favorite, sweet and bright, cooling warriors after the clash — as welcome as mead at midsummer.",
@@ -97,8 +106,9 @@ const teas = [
   {
     Name: "Wild Thai Black",
     Image: WildThaiBlack,
-    Pkgs: [{Cost: 3.99, Quantity: 100}],
+    Pkgs: [{ Cost: 6.0, Quantity: 100 }],
     Unit: "gram",
+    Route: "Black",
     Adjectives: "untamed • primal • fierce",
     Description:
       "Plucked from the wild groves of the northern frontier, this brew roars with the spirit of the deep forest — bold as a berserker’s charge.",

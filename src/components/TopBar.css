@@ -164,19 +164,20 @@
   position: relative;
   display: flex;
   width: 100%;
+  overflow-x: hidden;
 }
 
 #side-cart #sc-items .sc-item img {
   width: 100px;
+  cursor: pointer;
 }
 
 #side-cart #sc-items .info {
   font-size: 14px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
   padding: 15px 0px;
-  width: 150px;
   margin-left: 10px;
 }
 

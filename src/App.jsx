@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="app">
-      <TopBar cart={cart} setCart={setCart} />
+      <TopBar cart={cart} setCart={setCart} setShoppingItem={setShoppingItem} />
       <div id="middle">
         <img id="default-bg" src={TeaSpice} />
         <Outlet context={{ setShoppingItem }} />

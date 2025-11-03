@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { cartCount } from "./UtilityFunctions";
 import { useState } from "react";
 
-export default function TopBar({ cart, setCart }) {
+export default function TopBar({ cart, setCart, setShoppingItem }) {
   const [cartVis, setCartVis] = useState(false);
 
   return (
@@ -13,6 +13,12 @@ export default function TopBar({ cart, setCart }) {
       <div id="announcement">Serving Tea to Taste Berserkers since 972</div>
       <nav>
         <div id="categories">
+          <NavLink
+            to="/Black"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Black
+          </NavLink>
           <NavLink
             to="/Green"
             className={({ isActive }) => (isActive ? "active-link" : "")}
@@ -24,12 +30,6 @@ export default function TopBar({ cart, setCart }) {
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
             Oolong
-          </NavLink>
-          <NavLink
-            to="/Black"
-            className={({ isActive }) => (isActive ? "active-link" : "")}
-          >
-            Black
           </NavLink>
           <NavLink
             to="/Teaware"
@@ -47,7 +47,12 @@ export default function TopBar({ cart, setCart }) {
         </div>
       </nav>
       {cartVis && (
-        <ShoppingCart cart={cart} setCart={setCart} setCartVis={setCartVis} />
+        <ShoppingCart
+          cart={cart}
+          setCart={setCart}
+          setCartVis={setCartVis}
+          setShoppingItem={setShoppingItem}
+        />
       )}
     </div>
   );
