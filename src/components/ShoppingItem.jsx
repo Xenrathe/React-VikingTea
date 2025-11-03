@@ -39,10 +39,9 @@ function AddToCart(
   //we want the same item to only have a single object
   let repeatItem = false;
   cart.forEach((item) => {
-    if (item.Name == shoppingItem.Name) {
+    if (item.Product.Name == shoppingItem.Name) {
       newCart.push({
-        Name: shoppingItem.Name,
-        Image: shoppingItem.Image,
+        Product: shoppingItem,
         Count: item.Count + shoppingItem.Count,
       });
       repeatItem = true;
@@ -53,8 +52,7 @@ function AddToCart(
 
   if (!repeatItem)
     newCart.push({
-      Name: shoppingItem.Name,
-      Image: shoppingItem.Image,
+      Product: shoppingItem,
       Count: shoppingItem.Count,
     });
 
@@ -73,6 +71,8 @@ export default function ShoppingItem({
     // DEFAULT VIEW (no tea selected yet)
     return <div id="item-display" className="panel default"></div>;
   } else {
+    const unit = shoppingItem.Unit + (shoppingItem.Pkgs[0].Quantity > 1 ? "s" : "");
+
     return (
       <div id="item-display" className="panel">
         <img src={shoppingItem.Image} />
@@ -82,6 +82,7 @@ export default function ShoppingItem({
             <div className="adjectives">{shoppingItem.Adjectives}</div>
           </div>
           <div id="right-description">{shoppingItem.Description}</div>
+          <div id="right-cost">{shoppingItem.Pkgs[0].Quantity} {unit} / ${shoppingItem.Pkgs[0].Cost}</div>
           <div id="right-cart">
             <div id="right-quantity" className="item-count-adjust">
               <button

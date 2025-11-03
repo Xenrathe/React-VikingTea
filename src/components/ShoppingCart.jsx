@@ -1,10 +1,21 @@
 import dragonHead from "../assets/DragonHead.png";
+import deleteImg from "../assets/delete-outline.svg";
 
 //used for increasing or decreasing item count
 function adjustItemInCart(item, newCount, cart, setCart) {
-  item.Count = newCount;
-  const newCart = [...cart.filter((i) => i.Name != item.Name), item];
-  setCart(newCart);
+  if (newCount <= 0) {
+    // remove the item entirely (delete button pressed)
+    const newCart = cart.filter(i => i.Product.Name !== item.Product.Name);
+    setCart(newCart);
+  } else {
+    // update item count while preserving order (+ / - pressed)
+    const newCart = cart.map(i =>
+      i.Product.Name === item.Product.Name
+        ? { ...i, Count: newCount }
+        : i
+    );
+    setCart(newCart);
+  }
 }
 
 export default function ShoppingCart({ cart, setCart, setCartVis }) {
@@ -13,8 +24,10 @@ export default function ShoppingCart({ cart, setCart, setCartVis }) {
   // SUBTOTAL (x items) - TOTAL COST
   // CONTINUE TO CHECKOUT
   return (
+    <>
     <div id="sc-backscreen">
-      <div id="side-cart">
+    </div>
+    <div id="side-cart">
         <img id="dragonhead" src={dragonHead} />
         <div id="sc-titlebar">
           <span id="sc-title">Dragon Cart</span>
@@ -25,10 +38,11 @@ export default function ShoppingCart({ cart, setCart, setCartVis }) {
         <hr />
         <div id="sc-items">
           {cart.map((item) => (
-            <div className="sc-item" key={item.Name}>
-              <img src={item.Image} alt={item.Name} />
+            <div className="sc-item" key={item.Product.Name}>
+              <img src={item.Product.Image} alt={item.Product.Name} />
               <div className="info">
-                <span className="label">{item.Name}</span>
+                <span className="sc-label">{item.Product.Name}</span>
+                <div className="sc-quantity">{item.Product.Pkgs[0].Quantity} {item.Product.Unit + (item.Product.Pkgs[0].Quantity > 1 ? "s" : "")}</div>
                 <div className="item-count-adjust">
                   <button
                     disabled={item.Count == 1}
@@ -50,10 +64,17 @@ export default function ShoppingCart({ cart, setCart, setCartVis }) {
                   </button>
                 </div>
               </div>
+              <div className="remove-and-cost">
+                <img className="delete" src={deleteImg} alt="delete" onClick={() => {
+                      adjustItemInCart(item, 0, cart, setCart);
+                    }}/>
+                <span className="cost">${(item.Product.Pkgs[0].Cost * item.Count).toFixed(2)}</span>
+              </div>
+              <hr/>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }

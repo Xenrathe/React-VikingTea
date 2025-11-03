@@ -115,10 +115,20 @@
   font-family: Georgia;
 }
 
+#middle #item-display #right-cost {
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 7%;
+  padding-right: 7%;
+  margin-top: auto;
+  margin-bottom: 3%;
+  font-size: 20px;
+  font-family: Georgia;
+}
+
 #middle #item-display #right-cart {
   display: flex;
   gap: 5px;
-  margin-top: auto;
   margin-bottom: 20px;
 }
 

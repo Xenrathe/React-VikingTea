@@ -16,6 +16,8 @@ const teaware = [
   {
     Name: "Katakuchi Tea Bowl",
     Image: KatakuchiTeaBowl,
+    Pkgs: [{Cost: 49.99, Quantity: 1}],
+    Unit: "bowl",
     Adjectives: "clay • 625ml",
     Description:
       "A humble clay vessel, wide-lipped for pouring, used by northern brewers when sharing leaf-steeped wisdom around the longfire.",
@@ -23,6 +25,8 @@ const teaware = [
   {
     Name: "Takasuke Tokoname",
     Image: TakasukeTokonameKyusuTeapot,
+    Pkgs: [{Cost: 49.99, Quantity: 1}],
+    Unit: "teapot",
     Adjectives: "red clay • 270ml",
     Description:
       "Forged from Tokoname earth, this side-handled kyusu pours swift and sure, as if built for warriors thirsty after battle.",
@@ -30,6 +34,8 @@ const teaware = [
   {
     Name: "Cera-Mesh Kyusu",
     Image: CeraMeshKyusuTeapot,
+    Pkgs: [{Cost: 49.99, Quantity: 1}],
+    Unit: "teapot",
     Adjectives: "clay • 290ml",
     Description:
       "A natural clay kyusu with cunning mesh, filtering leaves like a shield wall against chaff, fit for precise brewing under watchful eyes.",
@@ -37,6 +43,8 @@ const teaware = [
   {
     Name: "Kikumaru Tokoname",
     Image: KikumaruTokonameSasameKyusuTeapot,
+    Pkgs: [{Cost: 49.99, Quantity: 1}],
+    Unit: "teapot",
     Adjectives: "clay • 250ml",
     Description:
       "Carved with fine sasame strainer, this Tokoname teapot serves as a chieftain's tool, pouring clear draughts for honored guests.",
@@ -44,6 +52,8 @@ const teaware = [
   {
     Name: "Genyu Hohin",
     Image: GenyuHohinTeapot,
+    Pkgs: [{Cost: 49.99, Quantity: 1}],
+    Unit: "teapot",
     Adjectives: "earthenware • 120ml",
     Description:
       "A lidless hohin for delicate brews, its glazed black earthenware gleams like shadows over fjord-waters, steeping leaves with quiet strength.",
@@ -51,6 +61,8 @@ const teaware = [
   {
     Name: "Wabi-Sabi Raku Bowl",
     Image: WabiSabiRakuMatchaBowl,
+    Pkgs: [{Cost: 49.99, Quantity: 1}],
+    Unit: "bowl",
     Adjectives: "red clay • 625ml",
     Description:
       "Dark and rugged, this matcha bowl embodies wabi-sabi—like a weathered shield, imperfect yet noble in battle and ceremony alike.",
@@ -58,6 +70,8 @@ const teaware = [
   {
     Name: "Kinto Hasami White",
     Image: KintoHasamiPorcelainSet,
+    Pkgs: [{Cost: 49.99, Quantity: 1}],
+    Unit: "tea set",
     Adjectives: "porcelain • 600/125ml",
     Description:
       "A clean porcelain set, bright as new snow on mountain peaks, carried by jarls who prize harmony at the feast table.",
@@ -65,6 +79,8 @@ const teaware = [
   {
     Name: "Kinto Hasami Black",
     Image: KintoHasamiPorcelainBlackSet,
+    Pkgs: [{Cost: 49.99, Quantity: 1}],
+    Unit: "tea set",
     Adjectives: "porcelain • 600/125ml",
     Description:
       "Dark-hued porcelain for somber rites, its surface recalling night seas where longships sail beneath unseen stars.",
@@ -72,6 +88,8 @@ const teaware = [
   {
     Name: "Matcha Pouring Bowl",
     Image: MatchaPouringBowl,
+    Pkgs: [{Cost: 49.99, Quantity: 1}],
+    Unit: "bowl",
     Adjectives: "porcelain • 625ml",
     Description:
       "Wide and sturdy with a spout for pouring, this bowl stands ready like a Viking ladle, serving forth the green strength of matcha.",
@@ -79,6 +97,8 @@ const teaware = [
   {
     Name: "Gaiwan Teapot",
     Image: GaiwanTeapot,
+    Pkgs: [{Cost: 49.99, Quantity: 1}],
+    Unit: "cup",
     Adjectives: "porcelain • 150ml",
     Description:
       "A lidded porcelain cup, wielded with skillful fingers like a warrior's dagger, brewing swift steeps in close company.",
