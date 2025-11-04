@@ -7,7 +7,7 @@ export default function TeaShelf({ teas, setShoppingItem }) {
         <div
           className="tea-icon"
           key={tea.Name}
-          onClick={() => setShoppingItem({ ...tea, Count: 1 })}
+          onClick={() => setShoppingItem({ Product: tea, Count: 1 })}
         >
           <img src={tea.Image} alt={tea.Name} />
           <span className="label">{tea.Name}</span>

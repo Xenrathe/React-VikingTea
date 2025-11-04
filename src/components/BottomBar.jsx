@@ -63,11 +63,11 @@ function Firework({ id, onComplete }) {
   );
 }
 
-export default function BottomBar({ floatingItems, setFloatingItems }) {
+export default function BottomBar({ floatingItems, setFloatingItems, cart }) {
   const [fireworks, setFireworks] = useState([]);
 
   //boat image block (bigger treasure the more floatingItems arrived in boat)
-  const currentCount = boatCount(floatingItems);
+  const currentCount = boatCount(floatingItems, cart);
   let boatImg = BoatWDogVVLarge;
   if (currentCount == 0) boatImg = BoatWDog;
   else if (currentCount < 4) boatImg = BoatWDogSmall;

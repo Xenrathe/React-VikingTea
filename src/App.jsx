@@ -15,7 +15,13 @@ function App() {
 
   return (
     <div className="app">
-      <TopBar cart={cart} setCart={setCart} setShoppingItem={setShoppingItem} />
+      <TopBar
+        cart={cart}
+        setCart={setCart}
+        setShoppingItem={setShoppingItem}
+        floatingItems={floatingItems}
+        setFloatingItems={setFloatingItems}
+      />
       <div id="middle">
         <img id="default-bg" src={TeaSpice} />
         <Outlet context={{ setShoppingItem }} />
@@ -31,6 +37,7 @@ function App() {
       <BottomBar
         floatingItems={floatingItems}
         setFloatingItems={setFloatingItems}
+        cart={cart}
       />
     </div>
   );

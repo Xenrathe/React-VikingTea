@@ -5,7 +5,13 @@ import { NavLink } from "react-router-dom";
 import { cartCount } from "./UtilityFunctions";
 import { useState } from "react";
 
-export default function TopBar({ cart, setCart, setShoppingItem }) {
+export default function TopBar({
+  cart,
+  setCart,
+  setShoppingItem,
+  floatingItems,
+  setFloatingItems,
+}) {
   const [cartVis, setCartVis] = useState(false);
 
   return (
@@ -52,6 +58,8 @@ export default function TopBar({ cart, setCart, setShoppingItem }) {
           setCart={setCart}
           setCartVis={setCartVis}
           setShoppingItem={setShoppingItem}
+          floatingItems={floatingItems}
+          setFloatingItems={setFloatingItems}
         />
       )}
     </div>
