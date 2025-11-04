@@ -7,6 +7,7 @@ export default function ShoppingItem({
   setCart,
   floatingItems,
   setFloatingItems,
+  floatingItemCount
 }) {
   if (shoppingItem == null) {
     // DEFAULT VIEW (no tea selected yet)
@@ -64,7 +65,8 @@ export default function ShoppingItem({
                   cart,
                   setCart,
                   floatingItems,
-                  setFloatingItems
+                  setFloatingItems,
+                  floatingItemCount
                 )
               }
             >

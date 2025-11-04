@@ -11,6 +11,7 @@ export default function TopBar({
   setShoppingItem,
   floatingItems,
   setFloatingItems,
+  floatingItemCount
 }) {
   const [cartVis, setCartVis] = useState(false);
 
@@ -60,6 +61,7 @@ export default function TopBar({
           setShoppingItem={setShoppingItem}
           floatingItems={floatingItems}
           setFloatingItems={setFloatingItems}
+          floatingItemCount={floatingItemCount}
         />
       )}
     </div>

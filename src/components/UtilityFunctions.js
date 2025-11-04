@@ -9,22 +9,22 @@ export function adjustCart(
   cart,
   setCart,
   floatingItems,
-  setFloatingItems
+  setFloatingItems,
+  floatingItemCount = null
 ) {
   const newCart = [];
-  let newCount = shoppingItem.Count;
+  const adjustment = shoppingItem.Count;
 
   //we want the same item to only have a single object
   let repeatItem = false;
   cart.forEach((item) => {
     if (item.Product.Name == shoppingItem.Product.Name) {
-      newCount = item.Count + shoppingItem.Count;
 
       // only add if the item hasn't been removed
-      if (newCount > 0){
+      if (item.Count + adjustment > 0){
         newCart.push({
         Product: shoppingItem.Product,
-        Count: item.Count + shoppingItem.Count,
+        Count: item.Count + adjustment,
       });}
 
       repeatItem = true;
@@ -33,10 +33,11 @@ export function adjustCart(
     }
   });
 
+  //adding a new item (will only be addition, never subtraction)
   if (!repeatItem)
     newCart.push({
       Product: shoppingItem.Product,
-      Count: newCount,
+      Count: shoppingItem.Count,
     });
 
   setCart(newCart);
@@ -52,21 +53,43 @@ export function adjustCart(
       floatingImg = mediumTreasure1; //randomly pick from 2 images
     else floatingImg = mediumTreasure2;
   }
-  if (shoppingItem.Count > 0){
-    
+
+  if (adjustment > 0){ //ADD A FLOATING BOX INTO ANIMATION
+
     const newFloatingItem = {
-      id: floatingItems.length,
+      id: floatingItemCount.current++,
       cartCount: shoppingItem.Count,
-      product: shoppingItem,
+      product: shoppingItem.Product,
       img: floatingImg,
       waveOffset: null,
       inBoat: false,
-      };
+    };
 
-      let newFloatingItems = [...floatingItems];
-      newFloatingItems.push(newFloatingItem);
-      setFloatingItems(newFloatingItems);
-    }
+    let newFloatingItems = [...floatingItems];
+    newFloatingItems.push(newFloatingItem);
+    setFloatingItems(newFloatingItems);
+  }
+  else if (adjustment == -1) //ADJUST COUNT OF FLOATING ITEM
+  {
+    let newFloatingItems = [];
+    let hasBeenAdjusted = false;
+
+    floatingItems.forEach((item) => {
+      if (hasBeenAdjusted || item.product.Name != shoppingItem.Product.Name) {
+        newFloatingItems.push(item);
+      } else if (item.cartCount > 1) {
+        item.cartCount = item.cartCount - 1;
+        newFloatingItems.push(item);
+        hasBeenAdjusted = true;
+      } //else if item.cartCount == 1, don't bother adding it back in
+    })
+
+    setFloatingItems(newFloatingItems);
+  }
+  else { //ENTIRE ITEM WAS REMOVED - REMOVE ALL INSTANCES FROM FLOATING ITEMS
+    const newFloatingItems = floatingItems.filter((item) => item.product.Name != shoppingItem.Product.Name);
+    setFloatingItems(newFloatingItems);
+  }
     // ***** END FLOATING ITEM STUFF *******
 }
 

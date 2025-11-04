@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import BottomBar from "./components/BottomBar.jsx";
 import { Outlet } from "react-router-dom";
@@ -12,6 +12,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [shoppingItem, setShoppingItem] = useState(null);
   const [floatingItems, setFloatingItems] = useState([]);
+  const floatingItemCount = useRef(0);
 
   return (
     <div className="app">
@@ -21,6 +22,7 @@ function App() {
         setShoppingItem={setShoppingItem}
         floatingItems={floatingItems}
         setFloatingItems={setFloatingItems}
+        floatingItemCount={floatingItemCount}
       />
       <div id="middle">
         <img id="default-bg" src={TeaSpice} />
@@ -32,6 +34,7 @@ function App() {
           setCart={setCart}
           floatingItems={floatingItems}
           setFloatingItems={setFloatingItems}
+          floatingItemCount={floatingItemCount}
         />
       </div>
       <BottomBar

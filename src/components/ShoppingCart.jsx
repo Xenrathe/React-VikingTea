@@ -10,6 +10,7 @@ export default function ShoppingCart({
   setShoppingItem,
   floatingItems,
   setFloatingItems,
+  floatingItemCount
 }) {
   // PIC - ITEM / - #items + - COST
   // etc for all items
@@ -19,7 +20,6 @@ export default function ShoppingCart({
   const itemCountStr =
     numItemsInCart != 1 ? `${numItemsInCart} items` : "1 item";
 
-  console.log(cart);
   const totalCost = cart.reduce(
     (acc, item) => acc + item.Product.Pkgs[0].Cost * item.Count,
     0
@@ -66,7 +66,8 @@ export default function ShoppingCart({
                           cart,
                           setCart,
                           floatingItems,
-                          setFloatingItems
+                          setFloatingItems,
+                          floatingItemCount
                         );
                       }
                     }}
@@ -81,7 +82,8 @@ export default function ShoppingCart({
                         cart,
                         setCart,
                         floatingItems,
-                        setFloatingItems
+                        setFloatingItems,
+                        floatingItemCount
                       );
                     }}
                   >
@@ -100,7 +102,8 @@ export default function ShoppingCart({
                       cart,
                       setCart,
                       floatingItems,
-                      setFloatingItems
+                      setFloatingItems,
+                      floatingItemCount
                     );
                   }}
                 />
