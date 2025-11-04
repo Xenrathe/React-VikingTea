@@ -4,7 +4,7 @@ import mediumTreasure2 from "../assets/Teasure-M-2.png";
 import smallTreasure1 from "../assets/Teasure-S-1.png";
 import smallTreasure2 from "../assets/Teasure-S-2.png";
 
-export function addToCart(
+export function adjustCart(
   shoppingItem,
   cart,
   setCart,
@@ -12,6 +12,34 @@ export function addToCart(
   setFloatingItems
 ) {
   const newCart = [];
+  let newCount = shoppingItem.Count;
+
+  //we want the same item to only have a single object
+  let repeatItem = false;
+  cart.forEach((item) => {
+    if (item.Product.Name == shoppingItem.Product.Name) {
+      newCount = item.Count + shoppingItem.Count;
+
+      // only add if the item hasn't been removed
+      if (newCount > 0){
+        newCart.push({
+        Product: shoppingItem.Product,
+        Count: item.Count + shoppingItem.Count,
+      });}
+
+      repeatItem = true;
+    } else {
+      newCart.push(item);
+    }
+  });
+
+  if (!repeatItem)
+    newCart.push({
+      Product: shoppingItem.Product,
+      Count: newCount,
+    });
+
+  setCart(newCart);
 
   // ***** FLOATING ITEM STUFF *******
   let floatingImg = largeTreasure; //only one largetreasure image
@@ -24,42 +52,22 @@ export function addToCart(
       floatingImg = mediumTreasure1; //randomly pick from 2 images
     else floatingImg = mediumTreasure2;
   }
-  const newFloatingItem = {
-    id: floatingItems.length,
-    cartCount: shoppingItem.Count,
-    product: shoppingItem,
-    img: floatingImg,
-    waveOffset: null,
-    inBoat: false,
-  };
-  let newFloatingItems = [...floatingItems];
-  newFloatingItems.push(newFloatingItem);
-  setFloatingItems(newFloatingItems);
-  // ***** END FLOATING ITEM STUFF *******
+  if (shoppingItem.Count > 0){
+    
+    const newFloatingItem = {
+      id: floatingItems.length,
+      cartCount: shoppingItem.Count,
+      product: shoppingItem,
+      img: floatingImg,
+      waveOffset: null,
+      inBoat: false,
+      };
 
-  //we want the same item to only have a single object
-  let repeatItem = false;
-  console.log(`SI: ${shoppingItem.Product.Name}`);
-  cart.forEach((item) => {
-    console.log(`CartName: ${item.Product.Name}`);
-    if (item.Product.Name == shoppingItem.Product.Name) {
-      newCart.push({
-        Product: shoppingItem.Product,
-        Count: item.Count + shoppingItem.Count,
-      });
-      repeatItem = true;
-    } else {
-      newCart.push(item);
+      let newFloatingItems = [...floatingItems];
+      newFloatingItems.push(newFloatingItem);
+      setFloatingItems(newFloatingItems);
     }
-  });
-
-  if (!repeatItem)
-    newCart.push({
-      Product: shoppingItem.Product,
-      Count: shoppingItem.Count,
-    });
-
-  setCart(newCart);
+    // ***** END FLOATING ITEM STUFF *******
 }
 
 //cart is an array of objects
@@ -81,10 +89,9 @@ export function cartCount(cart) {
 export function boatCount(floatingItems, cart) {
   const initialVal = 0;
 
-  const inCartCount = cartCount(cart);
   const inBoatCount = floatingItems
     .filter((item) => item.inBoat == true)
     .reduce((count, item) => count + item.cartCount, initialVal);
 
-  return Math.min(inBoatCount, inCartCount);
+  return inBoatCount
 }

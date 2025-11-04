@@ -1,4 +1,4 @@
-import { addToCart } from "./UtilityFunctions";
+import { adjustCart } from "./UtilityFunctions";
 
 export default function ShoppingItem({
   shoppingItem,
@@ -59,7 +59,7 @@ export default function ShoppingItem({
             <button
               className="add-to-cart"
               onClick={() =>
-                addToCart(
+                adjustCart(
                   shoppingItem,
                   cart,
                   setCart,

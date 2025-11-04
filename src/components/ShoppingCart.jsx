@@ -1,38 +1,7 @@
 import dragonHead from "../assets/DragonHead.png";
 import deleteImg from "../assets/delete-outline.svg";
 import { NavLink } from "react-router-dom";
-import { cartCount, addToCart } from "./UtilityFunctions";
-
-//used for increasing or decreasing item count
-function adjustItemInCart(
-  item,
-  newCount,
-  cart,
-  setCart,
-  floatingItems = null,
-  setFloatingItems = null,
-  isAddition = false
-) {
-  if (newCount <= 0) {
-    // remove the item entirely (delete button pressed)
-    const newCart = cart.filter((i) => i.Product.Name !== item.Product.Name);
-    setCart(newCart);
-  } else if (!isAddition) {
-    // update item count while preserving order (+ / - pressed)
-    const newCart = cart.map((i) =>
-      i.Product.Name === item.Product.Name ? { ...i, Count: newCount } : i
-    );
-    setCart(newCart);
-  } else {
-    addToCart(
-      { ...item, Count: 1 },
-      cart,
-      setCart,
-      floatingItems,
-      setFloatingItems
-    );
-  }
-}
+import { cartCount, adjustCart } from "./UtilityFunctions";
 
 export default function ShoppingCart({
   cart,
@@ -92,7 +61,13 @@ export default function ShoppingCart({
                     disabled={item.Count == 1}
                     onClick={() => {
                       if (item.Count != 1) {
-                        adjustItemInCart(item, item.Count - 1, cart, setCart);
+                        adjustCart(
+                          { ...item, Count: -1 },
+                          cart,
+                          setCart,
+                          floatingItems,
+                          setFloatingItems
+                        );
                       }
                     }}
                   >
@@ -101,14 +76,12 @@ export default function ShoppingCart({
                   <span>{item.Count}</span>
                   <button
                     onClick={() => {
-                      adjustItemInCart(
-                        item,
-                        item.Count + 1,
+                      adjustCart(
+                        { ...item, Count: 1 },
                         cart,
                         setCart,
                         floatingItems,
-                        setFloatingItems,
-                        true
+                        setFloatingItems
                       );
                     }}
                   >
@@ -122,7 +95,13 @@ export default function ShoppingCart({
                   src={deleteImg}
                   alt="delete"
                   onClick={() => {
-                    adjustItemInCart(item, 0, cart, setCart);
+                    adjustCart(
+                      { ...item, Count: item.Count * -1 },
+                      cart,
+                      setCart,
+                      floatingItems,
+                      setFloatingItems
+                    );
                   }}
                 />
                 <span className="cost">
