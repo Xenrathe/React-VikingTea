@@ -10,7 +10,7 @@ export default function ShoppingCart({
   setShoppingItem,
   floatingItems,
   setFloatingItems,
-  floatingItemCount
+  floatingItemCount,
 }) {
   // PIC - ITEM / - #items + - COST
   // etc for all items
@@ -111,15 +111,16 @@ export default function ShoppingCart({
                   ${(item.Product.Pkgs[0].Cost * item.Count).toFixed(2)}
                 </span>
               </div>
-              <hr />
             </div>
           ))}
         </div>
+        <hr />
         <div id="sc-total-checkout">
           <div id="sc-subtotal">
             <div id="sc-itemcount">Subtotal ({itemCountStr})</div>
             <div id="sc-totalcost">${totalCost}</div>
           </div>
+          <button>CHECKOUT</button>
         </div>
       </div>
     </>
