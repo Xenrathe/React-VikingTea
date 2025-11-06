@@ -29,7 +29,6 @@
   padding: 5px;
   gap: 2px;
   overflow-x: hidden;
-  overflow-y: default;
 }
 
 #middle .default {
@@ -84,7 +83,7 @@
 }
 
 #middle #item-display img {
-  height: 100%;
+  height: 95%;
 }
 
 #middle #item-right {
