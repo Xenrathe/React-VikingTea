@@ -43,7 +43,7 @@ export default function ShoppingCart({
               <NavLink
                 to={`/${item.Product.Route}`}
                 onClick={() => {
-                  setShoppingItem(item.Product);
+                  setShoppingItem(item);
                   setCartVis(false);
                 }}
               >
