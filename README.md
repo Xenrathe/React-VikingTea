@@ -6,7 +6,7 @@
 
 Viking Tea is a demo storefront for a viking-themed teashop, with a functional shopping cart (though not checkout, naturally), React router, backed by a suite of tests to ensure stability. It's also got a really rad boat animation.
 
-Viking Tea is active at (???)
+Viking Tea is active at (https://viking-tea.pages.dev/)
 
 ### Features:
 
