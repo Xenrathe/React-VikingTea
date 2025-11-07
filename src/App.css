@@ -1,16 +1,16 @@
 @font-face {
   font-family: "Norse";
-  src: url("Norse.otf");
+  src: url("/Norse.otf");
 }
 
 @font-face {
   font-family: "NorseBold";
-  src: url("NorseBold.otf");
+  src: url("/NorseBold.otf");
 }
 
 #root {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("background.png");
+    url("/background.png");
   background-size: cover;
   background-position: center;
 }
