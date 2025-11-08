@@ -15,7 +15,7 @@ export const blackTeas = [
     Image: DoiWaweeShaiHongSpringCake,
     Pkgs: [{ Cost: 8.0, Quantity: 100 }],
     Unit: "gram",
-    Route: "Black",
+    Route: "black",
     Adjectives: "ancient • smoldering • steadfast",
     Description:
       "Forged from the high mists of Wawee, this black cake is pressed like a warrior's shield, carrying the smoky strength of the mountain clans.",
@@ -25,7 +25,7 @@ export const blackTeas = [
     Image: EarlGrey,
     Pkgs: [{ Cost: 4.0, Quantity: 100 }],
     Unit: "gram",
-    Route: "Black",
+    Route: "black",
     Adjectives: "refined • storm-kissed • resolute",
     Description:
       "A noble black tea bound with bergamot's bright fire, said to be favored by jarls who rule beneath both thunder and crown.",
@@ -35,7 +35,7 @@ export const blackTeas = [
     Image: FirstFlushChamong,
     Pkgs: [{ Cost: 6.0, Quantity: 100 }],
     Unit: "gram",
-    Route: "Black",
+    Route: "black",
     Adjectives: "bright • brisk • youthful",
     Description:
       "A Darjeeling spring leaf as fresh as a new blade, lively with the vigor of young warriors sworn to their first oath.",
@@ -45,7 +45,7 @@ export const blackTeas = [
     Image: WhiskeyBarrelChiangDao,
     Pkgs: [{ Cost: 9.0, Quantity: 100 }],
     Unit: "gram",
-    Route: "Black",
+    Route: "black",
     Adjectives: "smoked • oaken • mighty",
     Description:
       "Rested in whiskey barrels beneath the dragon peaks, this black tea carries the depth of oak, the heat of spirit, and the weight of legend.",
@@ -55,7 +55,7 @@ export const blackTeas = [
     Image: GoldenYunnan,
     Pkgs: [{ Cost: 8.0, Quantity: 50 }],
     Unit: "gram",
-    Route: "Black",
+    Route: "black",
     Adjectives: "radiant • molten • enduring",
     Description:
       "These golden buds gleam like treasure hoards beneath the mountain halls, pouring forth a liquor as rich as a king's ransom.",
@@ -65,7 +65,7 @@ export const blackTeas = [
     Image: MasalaChai,
     Pkgs: [{ Cost: 4.0, Quantity: 100 }],
     Unit: "gram",
-    Route: "Black",
+    Route: "black",
     Adjectives: "fiery • spiced • triumphant",
     Description:
       "A caravan's bounty of spice and black leaf, brewed hot as a war-drum, warming shield-arms and battle-hearts alike.",
@@ -75,7 +75,7 @@ export const blackTeas = [
     Image: RoseDianHong,
     Pkgs: [{ Cost: 4.0, Quantity: 100 }],
     Unit: "gram",
-    Route: "Black",
+    Route: "black",
     Adjectives: "fragrant • alluring • valiant",
     Description:
       "Dian Hong entwined with rose petals — a drink for skalds and lovers, soft as dawn yet strong as the sword-arm.",
@@ -85,7 +85,7 @@ export const blackTeas = [
     Image: YunnanPurpleBuds,
     Pkgs: [{ Cost: 7.0, Quantity: 50 }],
     Unit: "gram",
-    Route: "Black",
+    Route: "black",
     Adjectives: "mystic • rare • commanding",
     Description:
       "Sprung from shadowed highlands, these purple buds brew a draught of deep power, fit for prophets and war-seers.",
@@ -95,7 +95,7 @@ export const blackTeas = [
     Image: SweetThaiIcedTea,
     Pkgs: [{ Cost: 4.0, Quantity: 100 }],
     Unit: "gram",
-    Route: "Black",
+    Route: "black",
     Adjectives: "smooth • honeyed • jovial",
     Description:
       "A feast-hall favorite, sweet and bright, cooling warriors after the clash — as welcome as mead at midsummer.",
@@ -105,7 +105,7 @@ export const blackTeas = [
     Image: WildThaiBlack,
     Pkgs: [{ Cost: 6.0, Quantity: 100 }],
     Unit: "gram",
-    Route: "Black",
+    Route: "black",
     Adjectives: "untamed • primal • fierce",
     Description:
       "Plucked from the wild groves of the northern frontier, this brew roars with the spirit of the deep forest — bold as a berserker’s charge.",

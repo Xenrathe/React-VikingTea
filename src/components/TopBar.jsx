@@ -2,7 +2,7 @@ import "./TopBar.css";
 import boat from "../assets/boatB.png";
 import ShoppingCart from "./ShoppingCart";
 import { NavLink } from "react-router-dom";
-import { cartCount } from "./UtilityFunctions";
+import { cartCount } from "../UtilityFunctions";
 import { useState } from "react";
 
 export default function TopBar({
@@ -11,7 +11,7 @@ export default function TopBar({
   setShoppingItem,
   floatingItems,
   setFloatingItems,
-  floatingItemCount
+  floatingItemCount,
 }) {
   const [cartVis, setCartVis] = useState(false);
 
@@ -21,25 +21,25 @@ export default function TopBar({
       <nav>
         <div id="categories">
           <NavLink
-            to="/Black"
+            to="/black"
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
             Black
           </NavLink>
           <NavLink
-            to="/Green"
+            to="/green"
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
             Green
           </NavLink>
           <NavLink
-            to="/Oolong"
+            to="/oolong"
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
             Oolong
           </NavLink>
           <NavLink
-            to="/Teaware"
+            to="/teaware"
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
             Teaware

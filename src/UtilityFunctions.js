@@ -1,8 +1,8 @@
-import largeTreasure from "../assets/Teasure-L.png";
-import mediumTreasure1 from "../assets/Teasure-M-1.png";
-import mediumTreasure2 from "../assets/Teasure-M-2.png";
-import smallTreasure1 from "../assets/Teasure-S-1.png";
-import smallTreasure2 from "../assets/Teasure-S-2.png";
+import largeTreasure from "./assets/Teasure-L.png";
+import mediumTreasure1 from "./assets/Teasure-M-1.png";
+import mediumTreasure2 from "./assets/Teasure-M-2.png";
+import smallTreasure1 from "./assets/Teasure-S-1.png";
+import smallTreasure2 from "./assets/Teasure-S-2.png";
 
 export function adjustCart(
   shoppingItem,
@@ -121,4 +121,11 @@ export function boatCount(floatingItems, cart) {
     .reduce((count, item) => count + item.cartCount, initialVal);
 
   return inBoatCount;
+}
+
+export function slugify(name) {
+  return name
+    .toLowerCase()
+    .replace(/\s+/g, "-") // turn spaces into dashes
+    .replace(/[^a-z0-9-]/g, ""); // remove special characters
 }

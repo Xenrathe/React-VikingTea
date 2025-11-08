@@ -2,7 +2,7 @@ import dragonHead from "../assets/DragonHead.png";
 import deleteImg from "../assets/delete-outline.svg";
 import "./ShoppingCart.css";
 import { NavLink } from "react-router-dom";
-import { cartCount, adjustCart } from "./UtilityFunctions";
+import { cartCount, adjustCart, slugify } from "../UtilityFunctions";
 
 export default function ShoppingCart({
   cart,
@@ -42,7 +42,7 @@ export default function ShoppingCart({
           {cart.map((item) => (
             <div className="sc-item" key={item.Product.Name}>
               <NavLink
-                to={`/${item.Product.Route}`}
+                to={`/${item.Product.Route}/${slugify(item.Product.Name)}`}
                 onClick={() => {
                   setShoppingItem(item);
                   setCartVis(false);

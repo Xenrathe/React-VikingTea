@@ -1,5 +1,5 @@
 import "./BottomBar.css";
-import { boatCount } from "./UtilityFunctions";
+import { boatCount } from "../UtilityFunctions";
 import { useState, useEffect, useRef } from "react";
 
 import BoatWDog from "../assets/BoatWDog.png";

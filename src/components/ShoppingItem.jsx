@@ -1,4 +1,4 @@
-import { adjustCart } from "./UtilityFunctions";
+import { adjustCart } from "../UtilityFunctions";
 
 export default function ShoppingItem({
   shoppingItem,
@@ -7,7 +7,7 @@ export default function ShoppingItem({
   setCart,
   floatingItems,
   setFloatingItems,
-  floatingItemCount
+  floatingItemCount,
 }) {
   if (shoppingItem == null) {
     // DEFAULT VIEW (no tea selected yet)
