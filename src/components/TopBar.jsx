@@ -8,7 +8,6 @@ import { useState } from "react";
 export default function TopBar({
   cart,
   setCart,
-  setShoppingItem,
   floatingItems,
   setFloatingItems,
   floatingItemCount,
@@ -58,7 +57,6 @@ export default function TopBar({
           cart={cart}
           setCart={setCart}
           setCartVis={setCartVis}
-          setShoppingItem={setShoppingItem}
           floatingItems={floatingItems}
           setFloatingItems={setFloatingItems}
           floatingItemCount={floatingItemCount}

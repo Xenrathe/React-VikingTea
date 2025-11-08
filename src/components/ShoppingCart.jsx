@@ -8,7 +8,6 @@ export default function ShoppingCart({
   cart,
   setCart,
   setCartVis,
-  setShoppingItem,
   floatingItems,
   setFloatingItems,
   floatingItemCount,
@@ -43,10 +42,7 @@ export default function ShoppingCart({
             <div className="sc-item" key={item.Product.Name}>
               <NavLink
                 to={`/${item.Product.Route}/${slugify(item.Product.Name)}`}
-                onClick={() => {
-                  setShoppingItem(item);
-                  setCartVis(false);
-                }}
+                onClick={() => setCartVis(false)}
               >
                 <img src={item.Product.Image} alt={item.Product.Name} />
               </NavLink>
