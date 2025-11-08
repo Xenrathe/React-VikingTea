@@ -28,12 +28,10 @@ Viking Tea is active at (https://viking-tea.pages.dev/)
 
 ### Future To-do List
 
-- Cookies save the shopping cart status across reloads
 - Routing also captures loaded item?
 - Responsive design: mobile + tablet
 - Add additional tests to the testing suite
 - Checkout page
-- Reorganize CSS
 
 ### Design Brief
 

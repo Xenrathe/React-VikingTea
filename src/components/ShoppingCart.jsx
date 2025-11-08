@@ -1,5 +1,6 @@
 import dragonHead from "../assets/DragonHead.png";
 import deleteImg from "../assets/delete-outline.svg";
+import "./ShoppingCart.css";
 import { NavLink } from "react-router-dom";
 import { cartCount, adjustCart } from "./UtilityFunctions";
 

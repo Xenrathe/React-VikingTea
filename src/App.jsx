@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import BottomBar from "./components/BottomBar.jsx";
 import { Outlet } from "react-router-dom";
@@ -9,10 +9,28 @@ import "./components/MiddlePanels.css";
 import TeaSpice from "./assets/tea-spice.jpg";
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const saved = localStorage.getItem("cart");
+    return saved ? JSON.parse(saved) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const [floatingItems, setFloatingItems] = useState(() => {
+    const saved = localStorage.getItem("floatingitems");
+    return saved ? JSON.parse(saved) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("floatingitems", JSON.stringify(floatingItems));
+  }, [floatingItems]);
+
+  const floatingItemCount = useRef(
+    Number(localStorage.getItem("ficount")) || 0
+  );
+  //NOTE: no useEffect hook here - the ficount in local storage is updated where the ref is actually incremented
+
   const [shoppingItem, setShoppingItem] = useState(null);
-  const [floatingItems, setFloatingItems] = useState([]);
-  const floatingItemCount = useRef(0);
 
   return (
     <div className="app">

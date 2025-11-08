@@ -19,13 +19,13 @@ export function adjustCart(
   let repeatItem = false;
   cart.forEach((item) => {
     if (item.Product.Name == shoppingItem.Product.Name) {
-
       // only add if the item hasn't been removed
-      if (item.Count + adjustment > 0){
+      if (item.Count + adjustment > 0) {
         newCart.push({
-        Product: shoppingItem.Product,
-        Count: item.Count + adjustment,
-      });}
+          Product: shoppingItem.Product,
+          Count: item.Count + adjustment,
+        });
+      }
 
       repeatItem = true;
     } else {
@@ -54,7 +54,8 @@ export function adjustCart(
     else floatingImg = mediumTreasure2;
   }
 
-  if (adjustment > 0){ //ADD A FLOATING BOX INTO ANIMATION
+  if (adjustment > 0) {
+    //ADD A FLOATING BOX INTO ANIMATION
 
     const newFloatingItem = {
       id: floatingItemCount.current++,
@@ -65,12 +66,13 @@ export function adjustCart(
       inBoat: false,
     };
 
+    localStorage.setItem("ficount", floatingItemCount.current);
+
     let newFloatingItems = [...floatingItems];
     newFloatingItems.push(newFloatingItem);
     setFloatingItems(newFloatingItems);
-  }
-  else if (adjustment == -1) //ADJUST COUNT OF FLOATING ITEM
-  {
+  } else if (adjustment == -1) {
+    //ADJUST COUNT OF FLOATING ITEM
     let newFloatingItems = [];
     let hasBeenAdjusted = false;
 
@@ -82,15 +84,17 @@ export function adjustCart(
         newFloatingItems.push(item);
         hasBeenAdjusted = true;
       } //else if item.cartCount == 1, don't bother adding it back in
-    })
+    });
 
     setFloatingItems(newFloatingItems);
-  }
-  else { //ENTIRE ITEM WAS REMOVED - REMOVE ALL INSTANCES FROM FLOATING ITEMS
-    const newFloatingItems = floatingItems.filter((item) => item.product.Name != shoppingItem.Product.Name);
+  } else {
+    //ENTIRE ITEM WAS REMOVED - REMOVE ALL INSTANCES FROM FLOATING ITEMS
+    const newFloatingItems = floatingItems.filter(
+      (item) => item.product.Name != shoppingItem.Product.Name
+    );
     setFloatingItems(newFloatingItems);
   }
-    // ***** END FLOATING ITEM STUFF *******
+  // ***** END FLOATING ITEM STUFF *******
 }
 
 //cart is an array of objects
@@ -116,5 +120,5 @@ export function boatCount(floatingItems, cart) {
     .filter((item) => item.inBoat == true)
     .reduce((count, item) => count + item.cartCount, initialVal);
 
-  return inBoatCount
+  return inBoatCount;
 }
