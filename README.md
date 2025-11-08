@@ -29,6 +29,7 @@ Viking Tea is active at (https://viking-tea.pages.dev/)
 ### Future To-do List
 
 - Routing also captures loaded item?
+- Custom 404 page
 - Responsive design: mobile + tablet
 - Add additional tests to the testing suite
 - Checkout page
