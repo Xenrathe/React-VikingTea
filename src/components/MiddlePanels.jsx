@@ -14,15 +14,18 @@ import { oolongTeas } from "../data/products-oolong.js";
 import { teaware } from "../data/products-teaware.js";
 
 export default function MiddlePanels() {
-  const { cart, setCart, floatingItems, setFloatingItems, floatingItemCount } = useOutletContext();
+  const { cart, setCart, floatingItems, setFloatingItems, floatingItemCount } =
+    useOutletContext();
   const { shelf, slug } = useParams();
 
   const validShelves = ["black", "green", "oolong", "teaware"];
   let actualShelfComponent;
   let useErrorShelf = false;
   let items = null;
+  let selectedTea = null;
 
-  if (shelf == "Default" || shelf == null) actualShelfComponent = <DefaultTeaShelf/>;
+  if (shelf == "Default" || shelf == null)
+    actualShelfComponent = <DefaultTeaShelf />;
   else if (validShelves.includes(shelf.toLowerCase())) {
     if (shelf == "black") items = blackTeas;
     else if (shelf == "green") items = greenTeas;
@@ -30,17 +33,19 @@ export default function MiddlePanels() {
     else if (shelf == "teaware") items = teaware;
 
     actualShelfComponent = <TeaShelf shelf={shelf} items={items} />;
-  }
-  else {
+    selectedTea = slug ? items.find((t) => slugify(t.Name) === slug) : null;
+  } else {
     actualShelfComponent = <ErrorShelf />;
     useErrorShelf = true;
-  } 
-
-  const selectedTea = slug ? items.find((t) => slugify(t.Name) === slug) : null;
+  }
 
   return (
     <div id="middle">
-      {useErrorShelf ? <img id="error-bg" src={BrokenShip} /> : <img id="default-bg" src={TeaSpice} />}
+      {useErrorShelf ? (
+        <img id="error-bg" src={BrokenShip} />
+      ) : (
+        <img id="default-bg" src={TeaSpice} />
+      )}
       {actualShelfComponent}
       <ShoppingItem
         selectedTea={selectedTea}
