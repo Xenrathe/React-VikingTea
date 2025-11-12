@@ -28,7 +28,6 @@ Viking Tea is active at (https://viking-tea.pages.dev/)
 
 ### Future To-do List
 
-- Custom 404 page
 - Responsive design: mobile + tablet
 - Add additional tests to the testing suite
 - Checkout page
@@ -39,5 +38,7 @@ This project was created as part of The Odin Project curriculum, expanding on th
 
 ### Image attribution
 
-- Viking Boat (https://thenounproject.com/icon/viking-boat-3782879/) by Eucalyp
+- Viking Boat Icon (https://thenounproject.com/icon/viking-boat-3782879/) by Eucalyp
 - Tea images from Rishi Tea (https://rishi-tea.com)
+- Tea ceremony (https://pixabay.com/photos/tea-ceremony-ceremony-teatime-japan-7807230/) by mirkostoedter on Pixaby
+- Ship Skeleton (https://unsplash.com/photos/dragon-skeleton-sculpture-on-a-grassy-hill-gImB44sl-IQ) by Ingrid Martinussen on Unsplash
