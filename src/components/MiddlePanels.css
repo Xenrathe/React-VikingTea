@@ -15,7 +15,8 @@
   flex: 1;
 }
 
-#middle #default-bg, #middle #error-bg {
+#middle #default-bg,
+#middle #error-bg {
   position: absolute;
   max-width: 100%;
   z-index: 0;
@@ -35,12 +36,14 @@
   color: black;
 }
 
-#middle .default, #middle .error {
+#middle .default,
+#middle .error {
   background-color: rgba(255, 255, 255, 0.2) !important;
   position: relative;
 }
 
-#middle .default .description, #middle .error .description {
+#middle .default .description,
+#middle .error .description {
   position: absolute;
   top: 25px;
   right: 12px;
@@ -89,28 +92,36 @@
   padding: 5px;
   background-color: rgba(255, 255, 255);
   z-index: 1;
+  max-width: 705px;
   width: 705px;
   min-width: 705px;
 }
 
+#middle #item-display .image-container {
+  flex-grow: 0;
+  margin: auto;
+}
+
 #middle #item-display img {
-  height: 95%;
+  width: 320px;
 }
 
 #middle #item-right {
   display: flex;
   flex-direction: column;
+  min-width: 370px;
+  flex-grow: 1;
 }
 
 #middle #item-display .title {
-  padding-left: 10%;
+  padding-left: 30px;
   margin-top: 3%;
   font-size: 30px;
   font-family: Garamond;
 }
 
 #middle #item-display .adjectives {
-  padding-left: 15%;
+  padding-left: 40px;
   margin-bottom: 10%;
   font-size: 19px;
   font-family: Garamond;
@@ -119,7 +130,8 @@
 }
 
 #middle #item-display #right-description {
-  padding-left: 7%;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-bottom: 3%;
   font-size: 13px;
   font-family: Georgia;
@@ -129,7 +141,7 @@
   display: flex;
   justify-content: flex-end;
   padding-left: 7%;
-  padding-right: 7%;
+  padding-right: 20px;
   margin-top: auto;
   margin-bottom: 3%;
   font-size: 20px;
@@ -138,6 +150,8 @@
 
 #middle #item-display #right-cart {
   display: flex;
+  align-self: flex-end;
+  padding-right: 20px;
   gap: 5px;
   margin-bottom: 20px;
 }

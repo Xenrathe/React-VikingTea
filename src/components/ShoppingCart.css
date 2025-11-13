@@ -41,27 +41,6 @@
   height: 30px;
 }
 
-#sc-close {
-  border-radius: 50px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  background: rgb(221, 221, 221);
-  color: rgb(114, 32, 32);
-}
-
-#sc-close:hover {
-  background: rgb(230, 230, 230);
-  color: rgb(131, 37, 37);
-}
-
-#sc-close:active {
-  background: rgb(202, 201, 201);
-  color: rgb(109, 31, 31);
-}
-
 #side-cart hr {
   margin: 0px;
   border-color: rgba(180, 81, 0, 0.521);

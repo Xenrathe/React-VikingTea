@@ -86,3 +86,25 @@ h1 {
   color: grey;
   cursor: pointer;
 }
+
+.x-btn {
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: rgb(221, 221, 221);
+  color: rgb(114, 32, 32);
+}
+
+.x-btn:hover {
+  background: rgb(230, 230, 230);
+  color: rgb(131, 37, 37);
+}
+
+.x-btn:active {
+  background: rgb(202, 201, 201);
+  color: rgb(109, 31, 31);
+}

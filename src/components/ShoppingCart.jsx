@@ -32,7 +32,11 @@ export default function ShoppingCart({
         <img id="dragonhead" src={dragonHead} />
         <div id="sc-titlebar">
           <span id="sc-title">Dragon Cart</span>
-          <span id="sc-close" onClick={() => setCartVis(false)}>
+          <span
+            id="sc-close"
+            className="x-btn"
+            onClick={() => setCartVis(false)}
+          >
             X
           </span>
         </div>
