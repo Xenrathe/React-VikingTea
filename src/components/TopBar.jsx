@@ -10,7 +10,7 @@ function expandMobileMenu(expand) {
   const categories = document.querySelector("#top-banner #categories");
 
   if (expand) categories.classList.add("expanded");
-  else categories.classList.add("hidden");
+  else categories.classList.remove("expanded");
 }
 
 export default function TopBar({
@@ -30,15 +30,16 @@ export default function TopBar({
           <img src={menuicon} onClick={() => expandMobileMenu(true)} />
         </div>
         <div id="categories">
-          <span
-            id="categories-close"
-            className="x-btn"
-            onClick={() => setCartVis(false)}
-          >
-            X
-          </span>
-          <span className="title">Tea Categories</span>
-          <hr className="thicker" />
+          <div className="menu-top">
+            <span
+              id="categories-close"
+              className="x-btn"
+              onClick={() => expandMobileMenu(false)}
+            >
+              X
+            </span>
+            <span className="title">Tea category:</span>
+          </div>
           <NavLink
             to="/black"
             className={({ isActive }) => (isActive ? "active-link" : "")}

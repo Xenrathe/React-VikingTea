@@ -53,8 +53,8 @@
 
 #top-banner #categories-small,
 #top-banner #categories-menu.minimized,
-#top-banner .x-btn,
-#top-banner hr {
+#top-banner hr,
+#top-banner .menu-top {
   display: none;
 }
 
@@ -64,10 +64,6 @@
 }
 
 @media screen and (max-width: 749px) {
-  #top-banner .x-btn {
-    display: flex;
-    margin-top: 10px;
-  }
 
   #top-banner #categories {
     display: none;
@@ -75,29 +71,51 @@
     position: absolute;
     top: 45px;
     left: 5px;
-    background-color: rgb(238, 238, 238);
-    border: solid black 1px;
+    background-color: rgb(220, 244, 252);
+    border: inset black 2px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     z-index: 100;
     min-width: 300px;
     padding: 10px;
 
-    font-size: 20px;
-  }
-
-  #top-banner #categories a {
-    width: 90px;
-    margin-left: 20px;
+    font-size: 33px;
   }
 
   #top-banner #categories.expanded {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #top-banner #categories .menu-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    min-width: 100%;
+  }
+
+  #top-banner .x-btn {
+    display: flex;
+    justify-self: flex-start;
+    font-size: 20px;
+  }
+
+  #top-banner .menu-top .title {
+    font-size: 20px;
+    font-family: NorseBold;
+    padding-right: 35%;
+  }
+
+  #top-banner #categories a {
+    display: flex;
+    padding: 0px 10px;
   }
 
   #top-banner #categories.expanded hr {
     display: block;
     margin: 0 10px;
-    width: 100px;
+    width: 100%;
   }
 
   #top-banner #categories.expanded hr.thicker {
