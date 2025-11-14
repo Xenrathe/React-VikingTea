@@ -40,7 +40,7 @@ export default function MiddlePanels() {
   }
 
   return (
-    <div id="middle">
+    <div id="middle" className={useErrorShelf ? "has-error" : ""}>
       {useErrorShelf ? (
         <img id="error-bg" src={BrokenShip} />
       ) : (

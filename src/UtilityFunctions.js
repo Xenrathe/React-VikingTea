@@ -123,6 +123,20 @@ export function boatCount(floatingItems, cart) {
   return inBoatCount;
 }
 
+export function expandCategoryMenu(expand) {
+  const categories = document.querySelector("#top-banner #categories");
+
+  if (expand) categories.classList.add("expanded");
+  else categories.classList.remove("expanded");
+}
+
+export function shelfExpansion(expandIt) {
+  const teashelf = document.querySelector(".tea-shelf");
+
+  if (expandIt) teashelf.classList.add("expanded");
+  else teashelf.classList.remove("expanded");
+}
+
 export function slugify(name) {
   return name
     .toLowerCase()
