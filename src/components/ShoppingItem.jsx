@@ -26,7 +26,7 @@ export default function ShoppingItem({
 
     return (
       <div id="item-display" className="panel">
-        <div class="image-container">
+        <div className="image-container">
           <img src={selectedTea.Image} />
         </div>
         <div id="item-right">

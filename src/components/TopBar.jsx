@@ -3,6 +3,7 @@ import boat from "../assets/boatB.png";
 import menuicon from "../assets/menu.svg";
 import ShoppingCart from "./ShoppingCart";
 import { NavLink } from "react-router-dom";
+import React from "react";
 import {
   cartCount,
   expandCategoryMenu,
@@ -30,6 +31,7 @@ export default function TopBar({
         </div>
         <div id="categories">
           <div className="menu-top">
+            <span className="title">Tea category:</span>
             <span
               id="categories-close"
               className="x-btn"
@@ -37,10 +39,9 @@ export default function TopBar({
             >
               X
             </span>
-            <span className="title">Tea category:</span>
           </div>
           {shelfCategories.map((cat, index) => (
-            <>
+            <React.Fragment key={cat}>
               <NavLink
                 to={`/${cat.toLowerCase()}`}
                 className={({ isActive }) => (isActive ? "active-link" : "")}
@@ -52,7 +53,7 @@ export default function TopBar({
                 {cat}
               </NavLink>
               {index != shelfCategories.length - 1 ? <hr /> : null}
-            </>
+            </React.Fragment>
           ))}
         </div>
         <div id="icon-and-title">VIKING TEA</div>
