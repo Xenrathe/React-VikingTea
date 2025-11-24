@@ -14,7 +14,8 @@ function animateBoat(x1Ref, cycleLength) {
     const progress =
       (((-x1Ref.current % cycleLength) + cycleLength) % cycleLength) /
       cycleLength;
-    const angle = progress * 2 * Math.PI;
+    const offset = (0);
+    const angle = (progress + offset) * 2 * Math.PI;
     const boatY =
       boatYMax + ((boatYMin - boatYMax) / 2) * (1 - Math.cos(angle));
     const boatRot =
@@ -58,7 +59,7 @@ function animateFloatingItems(
     }
 
     // arrives at boat threshold, mark inBoat
-    const arrivalX = 350; //represents middle of boat
+    const arrivalX = 250; //represents middle of boat
     if (pos <= arrivalX) {
       initializeFirework(setFireworks);
       setFloatingItems((prev) => {
