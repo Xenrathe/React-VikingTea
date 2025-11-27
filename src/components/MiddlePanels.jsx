@@ -32,7 +32,7 @@ export default function MiddlePanels() {
     else if (shelf == "oolong") items = oolongTeas;
     else if (shelf == "teaware") items = teaware;
 
-    actualShelfComponent = <TeaShelf shelf={shelf} items={items} />;
+    actualShelfComponent = <TeaShelf shelf={shelf} slug={slug} items={items} />;
     selectedTea = slug ? items.find((t) => slugify(t.Name) === slug) : null;
   } else {
     actualShelfComponent = <ErrorShelf />;
