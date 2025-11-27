@@ -26,46 +26,56 @@ export default function ShoppingItem({
 
     return (
       <div id="item-display" className="panel">
-        <div className="image-container">
-          <img src={selectedTea.Image} />
+        <div className="fs-image-container">
+          <img id="full-size-img" src={selectedTea.Image} />
         </div>
         <div id="item-right">
-          <div id="right-title">
-            <div className="title">{selectedTea.Name}</div>
-            <div className="adjectives">{selectedTea.Adjectives}</div>
-          </div>
-          <div id="right-description">{selectedTea.Description}</div>
-          <div id="right-cost">
-            {selectedTea.Pkgs[0].Quantity} {unit} / ${selectedTea.Pkgs[0].Cost}
-          </div>
-          <div id="right-cart">
-            <div id="right-quantity" className="item-count-adjust">
-              <button
-                disabled={itemCount == 1}
-                onClick={() => {
-                  if (itemCount != 1) setItemCount(itemCount - 1);
-                }}
-              >
-                -
-              </button>
-              <span>{itemCount}</span>
-              <button onClick={() => setItemCount(itemCount + 1)}>+</button>
+          <div id="right-info-and-pic">
+            <div className="ss-image-container">
+              <img id="smaller-size-img" src={selectedTea.Image} />
             </div>
-            <button
-              className="add-to-cart"
-              onClick={() =>
-                adjustCart(
-                  { Product: selectedTea, Count: itemCount },
-                  cart,
-                  setCart,
-                  floatingItems,
-                  setFloatingItems,
-                  floatingItemCount
-                )
-              }
-            >
-              ADD TO CART
-            </button>
+            <div id="right-info">
+              <div id="right-title">
+                <div className="title">{selectedTea.Name}</div>
+                <div className="adjectives">{selectedTea.Adjectives}</div>
+              </div>
+              <div id="right-description">{selectedTea.Description}</div>
+            </div>
+          </div>
+          <div id="right-cost-and-cart">
+            <div id="right-cost">
+              {selectedTea.Pkgs[0].Quantity} {unit} / $
+              {selectedTea.Pkgs[0].Cost}
+            </div>
+            <div id="right-cart">
+              <div id="right-quantity" className="item-count-adjust">
+                <button
+                  disabled={itemCount == 1}
+                  onClick={() => {
+                    if (itemCount != 1) setItemCount(itemCount - 1);
+                  }}
+                >
+                  -
+                </button>
+                <span>{itemCount}</span>
+                <button onClick={() => setItemCount(itemCount + 1)}>+</button>
+              </div>
+              <button
+                className="add-to-cart"
+                onClick={() =>
+                  adjustCart(
+                    { Product: selectedTea, Count: itemCount },
+                    cart,
+                    setCart,
+                    floatingItems,
+                    setFloatingItems,
+                    floatingItemCount
+                  )
+                }
+              >
+                ADD TO CART
+              </button>
+            </div>
           </div>
         </div>
       </div>
