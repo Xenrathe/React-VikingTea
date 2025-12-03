@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function animateBoat(x1Ref, cycleLength) {
-  const boat = document.getElementById("boat-img");
-
+function animateBoat(x1Ref, cycleLength, boat) {
   if (boat) {
     //adjust as needed by experimentation
     const boatYMin = -40;
@@ -10,11 +8,14 @@ function animateBoat(x1Ref, cycleLength) {
     const boatRotMin = -7;
     const boatRotMax = 5;
 
+    //this value is necessary because boat's position is responsive
+    const leftPx = parseFloat(getComputedStyle(boat).left);
+    let offset = 0;
+    if (leftPx == -20) offset = -0.15;
     //calculations
     const progress =
       (((-x1Ref.current % cycleLength) + cycleLength) % cycleLength) /
       cycleLength;
-    const offset = (0);
     const angle = (progress + offset) * 2 * Math.PI;
     const boatY =
       boatYMax + ((boatYMin - boatYMax) / 2) * (1 - Math.cos(angle));
@@ -34,9 +35,19 @@ function animateFloatingItems(
   offsetsRef,
   cycleLength,
   imgWidth,
-  speed
+  speed,
+  boat
 ) {
   const items = floatingItemsRef.current || [];
+
+  //calculate arrivalX, changes responsively, dependent on CSS
+  const leftPx = parseFloat(getComputedStyle(boat).left);
+  const arrivalX = leftPx == 30 ? 250 : 50; //represents middle of boat
+
+  const itemYMin = leftPx == 30 ? -35 : -55; //note this is the top of the arc
+  const itemYMax = leftPx == 30 ? 60 : 0; //...and this is the bottom
+  const itemRotMin = -20;
+  const itemRotMax = 20;
 
   items.forEach((item) => {
     if (item.inBoat) return;
@@ -58,8 +69,6 @@ function animateFloatingItems(
       if (elem) elementCacheRef.current.set(id, elem);
     }
 
-    // arrives at boat threshold, mark inBoat
-    const arrivalX = 250; //represents middle of boat
     if (pos <= arrivalX) {
       initializeFirework(setFireworks);
       setFloatingItems((prev) => {
@@ -83,11 +92,6 @@ function animateFloatingItems(
           cycleLength;
         const offset = (165 / 180) * Math.PI;
         const angle = progress * 2 * Math.PI - offset;
-
-        const itemYMin = -35;
-        const itemYMax = 60;
-        const itemRotMin = -20;
-        const itemRotMax = 20;
 
         const itemY =
           itemYMax + ((itemYMin - itemYMax) / 2) * (1 - Math.cos(angle));
@@ -114,6 +118,7 @@ export default function Wave({
   setFireworks = null,
   syncBoat = false,
 }) {
+  const boat = syncBoat ? document.getElementById("boat-img") : null;
   const img1Ref = useRef(null);
   const img2Ref = useRef(null);
   const [imgWidth, setImgWidth] = useState(0);
@@ -210,7 +215,7 @@ export default function Wave({
 
       // the boat animation
       if (syncBoat) {
-        animateBoat(x1Ref, cycleLength);
+        animateBoat(x1Ref, cycleLength, boat);
       }
 
       // floating item animation
@@ -224,7 +229,8 @@ export default function Wave({
           offsetsRef,
           cycleLength,
           imgWidth,
-          speed
+          speed,
+          boat
         );
       }
 

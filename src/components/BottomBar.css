@@ -33,7 +33,18 @@
 .single-wave img {
   position: absolute;
   left: 0;
-  top: -45px;
+}
+
+@media screen and (min-width: 551px) {
+  .single-wave img {
+    top: -45px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .single-wave img {
+    bottom: 0;
+  }
 }
 
 #boat-img {
@@ -41,6 +52,24 @@
   left: 30px;
   top: -15px;
   height: 480px;
+}
+
+@media screen and (max-width: 550px) {
+  .single-wave {
+    transform: scaleY(0.5);
+    transform-origin: bottom;
+    bottom: 0;
+  }
+
+  .single-wave img {
+    bottom: 0;
+  }
+
+  #boat-img {
+    left: -20px;
+    top: 0px;
+    height: 380px;
+  }
 }
 
 .floating-item {

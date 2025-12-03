@@ -28,7 +28,6 @@ Viking Tea is active at (https://viking-tea.pages.dev/)
 
 ### Future To-do List
 
-- Responsive design: mobile + tablet
 - Add additional tests to the testing suite
 - Checkout page
 

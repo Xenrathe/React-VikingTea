@@ -26,8 +26,12 @@ function Firework({ id, onComplete }) {
   );
   const flashcolor = `radial-gradient(circle, ${fwcolorRef.current}, transparent)`;
 
+  const boat = document.getElementById("boat-img");
+  const leftPx = parseFloat(getComputedStyle(boat).left);
+
   const topRef = useRef(130 - Math.random() * 100);
-  const leftRef = useRef(425 - Math.random() * 200);
+  const middleLeft = leftPx == 30 ? 425 : 225;
+  const leftRef = useRef(middleLeft - Math.random() * 150);
 
   useEffect(() => {
     const timer = setTimeout(onComplete, 1500);
