@@ -123,6 +123,9 @@ export default function Wave({
   const img2Ref = useRef(null);
   const [imgWidth, setImgWidth] = useState(0);
 
+  // time state refs
+  const lastTime = useRef(performance.now());
+
   // animation state refs (persist between renders)
   const x1Ref = useRef(0);
   const x2Ref = useRef(0);
@@ -196,10 +199,16 @@ export default function Wave({
       rafRef.current = null;
     }
 
-    const animate = () => {
+    lastTime.current = performance.now();
+
+    const animate = (now) => {
       // animating the wave image
-      x1Ref.current -= speed;
-      x2Ref.current -= speed;
+      const timeDelta = now - lastTime.current; //in ms
+      lastTime.current = now;
+      const adjustedDelta = timeDelta / 15;
+
+      x1Ref.current -= speed * adjustedDelta;
+      x2Ref.current -= speed * adjustedDelta;
 
       if (x1Ref.current <= -imgWidth) {
         x1Ref.current = x2Ref.current + imgWidth;
@@ -229,7 +238,7 @@ export default function Wave({
           offsetsRef,
           cycleLength,
           imgWidth,
-          speed,
+          speed * adjustedDelta,
           boat
         );
       }
