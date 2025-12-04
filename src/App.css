@@ -10,7 +10,7 @@
 
 #root {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("/background.png");
+    url("/background2.png");
   background-size: cover;
   background-position: center;
 }
@@ -59,7 +59,6 @@ body {
   min-width: 320px;
   max-width: 100%;
   min-height: 100vh;
-  max-height: 100vh;
   overflow-x: hidden;
 }
 
