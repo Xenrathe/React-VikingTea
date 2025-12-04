@@ -16,6 +16,14 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 750px) {
+  #bottom {
+    min-width: 100vw;
+    max-width: 100vw;
+    border-width: 12px;
+  }
+}
+
 .waves-viewport {
   height: 100%;
   width: 100%;
