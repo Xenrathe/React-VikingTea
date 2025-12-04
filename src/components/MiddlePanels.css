@@ -161,6 +161,7 @@
     min-width: 100vw;
     z-index: 101;
     box-sizing: border-box;
+    overscroll-behavior: contain;
   }
 
   #middle .tea-shelf.expanded .teas {
