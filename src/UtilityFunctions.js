@@ -133,8 +133,10 @@ export function expandCategoryMenu(expand) {
 export function shelfExpansion(expandIt) {
   const teashelf = document.querySelector(".tea-shelf");
 
-  if (expandIt) teashelf.classList.add("expanded");
-  else teashelf.classList.remove("expanded");
+  if (teashelf) {
+    if (expandIt) teashelf.classList.add("expanded");
+    else teashelf.classList.remove("expanded");
+  }
 }
 
 export function slugify(name) {
