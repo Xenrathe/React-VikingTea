@@ -46,6 +46,7 @@ a {
 a:hover {
   color: #747bff;
 }
+
 html {
   width: 100%;
   overflow-x: hidden;
@@ -57,8 +58,8 @@ body {
   place-items: center;
   min-width: 320px;
   max-width: 100%;
-  min-height: 100dvh;
-  max-height: 100dvh;
+  min-height: 100vh;
+  max-height: 100vh;
   overflow-x: hidden;
 }
 
