@@ -13,12 +13,12 @@
 @media screen and (max-width: 749px) {
   #middle {
     min-width: 100vw;
-    min-height: 400px;
+    min-height: 320px;
     margin-bottom: 2px;
   }
 
   #middle #item-display #right-info-and-pic {
-    min-height: 240px !important;
+    min-height: 210px !important;
   }
 }
 

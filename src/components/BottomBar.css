@@ -3,6 +3,7 @@
   min-width: min(1500px, 96vw);
   max-width: min(1500px, 96vw);
   height: 350px;
+  min-height: 325px;
 
   background: rgba(255, 255, 255, 0.15);
   border: outset 20px rgb(0, 0, 0, 0.5);
