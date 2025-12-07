@@ -16,7 +16,7 @@ Viking Tea is active at (https://viking-tea.pages.dev/)
 - Cookies to save shopping cart status even in the face of a reload (not yet implemented)
 - Responsive design for mobile, tablet, and desktop (not fully implemented yet)
 
-![Animated screenshot of boat](https://github.com/Xenrathe/React-VikingTea/blob/main/boatanim30.gif?raw=true)
+![Animated screenshot of boat](https://github.com/Xenrathe/React-VikingTea/blob/main/BoatAnim30.gif)
 
 ### Tech Stack:
 
