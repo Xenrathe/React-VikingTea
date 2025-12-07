@@ -58,7 +58,12 @@ export default function TopBar({
         </div>
         <div id="icon-and-title">VIKING TEA</div>
         <div id="cart">
-          <img id="boat-cart" src={boat} onClick={() => setCartVis(true)} />
+          <img
+            id="boat-cart"
+            alt="shopping-cart-button"
+            src={boat}
+            onClick={() => setCartVis(true)}
+          />
           <span id="count-cart" onClick={() => setCartVis(true)}>
             {cartCount(cart)}
           </span>

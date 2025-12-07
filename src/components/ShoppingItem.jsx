@@ -44,8 +44,10 @@ export default function ShoppingItem({
           </div>
           <div id="right-cost-and-cart">
             <div id="right-cost">
-              {selectedTea.Pkgs[0].Quantity} {unit} / $
-              {selectedTea.Pkgs[0].Cost}
+              <span id="rc-quantity">
+                {selectedTea.Pkgs[0].Quantity} {unit}
+              </span>
+              <span id="rc-cost">&nbsp;/ ${selectedTea.Pkgs[0].Cost}</span>
             </div>
             <div id="right-cart">
               <div id="right-quantity" className="item-count-adjust">
