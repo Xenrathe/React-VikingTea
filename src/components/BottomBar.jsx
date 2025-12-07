@@ -106,6 +106,7 @@ export default function BottomBar({ floatingItems, setFloatingItems, cart }) {
                   id={`FI-${floatingItem.id}`}
                   key={floatingItem.id}
                   className="floating-item"
+                  alt="floating tea box"
                 />
               );
             }

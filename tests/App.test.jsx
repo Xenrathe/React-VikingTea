@@ -1,11 +1,16 @@
 import { describe, it, expect } from "vitest";
-import { render, screen, findByText } from "@testing-library/react";
+import { render, screen, findByText, getByRole, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { routes } from "../src/routes.jsx";
 
+afterEach(() => {
+  localStorage.clear();
+  cleanup();
+});
+
 describe("Navbar + Middle component", () => {
-  it("renders a Matcha tea when user clicks Green nav link"),
+  it("renders a Matcha tea when user clicks Green nav link",
     async () => {
       const user = userEvent.setup();
 
@@ -21,9 +26,9 @@ describe("Navbar + Middle component", () => {
 
       // Check for text in the Green shelf
       expect(await screen.findByText(/matcha/i)).toBeInTheDocument();
-    };
+    });
 
-  it("renders Iron Goddess when user clicks Oolong nav link"),
+  it("renders Iron Goddess when user clicks Oolong nav link",
     async () => {
       const user = userEvent.setup();
 
@@ -39,9 +44,9 @@ describe("Navbar + Middle component", () => {
 
       // Check for text in the Oolong shelf
       expect(await screen.findByText(/iron goddess/i)).toBeInTheDocument();
-    };
+    });
 
-  it("renders Earl Grey tea item when user clicks Oolong nav link"),
+  it("renders Earl Grey tea item when user clicks Oolong nav link",
     async () => {
       const user = userEvent.setup();
 
@@ -57,9 +62,9 @@ describe("Navbar + Middle component", () => {
 
       // Check for text in the Black shelf
       expect(await screen.findByText(/earl grey/i)).toBeInTheDocument();
-    };
+    });
 
-  it("renders a teapot item when user clicks Teaware nav link"),
+  it("renders a teapot item when user clicks Teaware nav link",
     async () => {
       const user = userEvent.setup();
 
@@ -75,22 +80,22 @@ describe("Navbar + Middle component", () => {
 
       // Check for text in the Teaware shelf
       expect(await screen.findByText(/teapot/i)).toBeInTheDocument();
-    };
+    });
 });
 
 describe("URL Routing", () => {
-  it("loads the correct product (Matcha) when deep linking (/green/matcha)"),
+  it("loads the correct product (genmaicha) when deep linking (/green/genmaicha)",
     async () => {
       const memoryRouter = createMemoryRouter(routes, {
-        initialEntries: ["/green/matcha"],
+        initialEntries: ["/green/genmaicha"],
       });
       render(<RouterProvider router={memoryRouter} />);
 
       const itemDisplay = document.querySelector("#item-display");
-      expect(await findByText(itemDisplay, /matcha/i)).toBeInTheDocument();
-    };
+      expect(await findByText(itemDisplay, /genmaicha/i)).toBeInTheDocument();
+    });
 
-  it("renders error shelf when trying to route to non-existent shelf"),
+  it("renders error shelf when trying to route to non-existent shelf",
     async () => {
       const memoryRouter = createMemoryRouter(routes, {
         initialEntries: ["/apple"],
@@ -100,11 +105,11 @@ describe("URL Routing", () => {
       expect(
         await screen.findByText(/this page does not exist/i)
       ).toBeInTheDocument();
-    };
+    });
 });
 
 describe("Item Display / Shopping Item", () => {
-  it(" adds correct quantity to cart"),
+  it(" adds correct quantity to cart",
     async () => {
       const user = userEvent.setup();
 
@@ -115,19 +120,20 @@ describe("Item Display / Shopping Item", () => {
       render(<RouterProvider router={memoryRouter} />);
 
       // Increase quantity x2, then decrease quantity x1
-      await user.click(screen.getByRole("button", { name: "+" }));
-      await user.click(screen.getByRole("button", { name: "+" }));
-      await user.click(screen.getByRole("button", { name: "-" }));
+      const itemDisplay = document.querySelector("#item-display");
+      await user.click(getByRole(itemDisplay, "button", { name: "+" }));
+      await user.click(getByRole(itemDisplay, "button", { name: "+" }));
+      await user.click(getByRole(itemDisplay, "button", { name: "-" }));
 
       // Add to cart
       await user.click(screen.getByRole("button", { name: /add to cart/i }));
 
       // Cart count should update (your UI shows item count in the top bar)
       const topbanner = document.querySelector("#top-banner");
-      expect(topbanner.getByText("2")).toBeInTheDocument();
-    };
+      expect(await findByText(topbanner, "2")).toBeInTheDocument();
+    });
 
-  it(" adds correct quantity and item to the Dragon Cart side-cart"),
+  it(" adds correct quantity and item to the Dragon Cart side-cart",
     async () => {
       const user = userEvent.setup();
 
@@ -138,60 +144,75 @@ describe("Item Display / Shopping Item", () => {
       render(<RouterProvider router={memoryRouter} />);
 
       // Increase quantity x2, then decrease quantity x1
-      await user.click(screen.getByRole("button", { name: "+" }));
-      await user.click(screen.getByRole("button", { name: "+" }));
-      await user.click(screen.getByRole("button", { name: "-" }));
-
-      // Add to cart
-      await user.click(screen.getByRole("button", { name: /add to cart/i }));
+      const itemDisplay = document.querySelector("#item-display");
+      await user.click(getByRole(itemDisplay, "button", { name: "+" }));
+      await user.click(getByRole(itemDisplay, "button", { name: "+" }));
+      await user.click(getByRole(itemDisplay, "button", { name: "-" }));
+      await user.click(getByRole(itemDisplay, "button", { name: /add to cart/i }));
 
       //Open the side-cart
       await user.click(screen.getByAltText("shopping-cart-button"));
 
       // Cart count should update (your UI shows item count in the top bar)
-      const topbanner = document.querySelector("#top-banner");
-      expect(topbanner.getByText("2")).toBeInTheDocument();
-      expect(topbanner.getByText(/matcha/i)).toBeInTheDocument();
-    };
+      const scitems = document.querySelector("#sc-items");
+      expect(await findByText(scitems, "2")).toBeInTheDocument();
+      expect(await findByText(scitems, /matcha/i)).toBeInTheDocument();
+    });
 
   it(
-    " adds correct subtotal (item and cost) to the Dragon Cart side-cart for multiple items"
-  ),
-    () => {
+    " adds correct subtotal (item and cost) to the Dragon Cart side-cart for multiple items",
+    async () => {
       const greenItems = ["matcha", "sencha"];
       let totalExpectedCost = 0;
+      const user = userEvent.setup();
 
-      greenItems.forEach((item) => {
-        async () => {
-          const user = userEvent.setup();
+      for (const item of greenItems) {
+        cleanup();
 
-          const memoryRouter = createMemoryRouter(routes, {
-            initialEntries: [`/green/${item}`],
-          });
+        const memoryRouter = createMemoryRouter(routes, {
+          initialEntries: [`/green/${item}`],
+        });
 
-          render(<RouterProvider router={memoryRouter} />);
-          await user.click(screen.getByRole("button", { name: "+" }));
+        render(<RouterProvider router={memoryRouter} />);
+        const itemDisplay = document.querySelector("#item-display");
+        await user.click(getByRole(itemDisplay, "button", { name: "+" }));
 
-          const itemCost = parseFloat(
-            document
-              .querySelector("#rc-cost")
-              .textContent.replace(/[^0-9.]/g, "")
-          );
-          totalExpectedCost += itemCost * 2;
+        const itemCost = parseFloat(
+          document
+            .querySelector("#rc-cost")
+            .textContent.replace(/[^0-9.]/g, "")
+        );
+        totalExpectedCost += itemCost * 2;
 
-          // Add to cart
-          await user.click(
-            screen.getByRole("button", { name: /add to cart/i })
-          );
+        // Add to cart
+        await user.click(getByRole(itemDisplay, "button", { name: /add to cart/i }));
+      };
 
-          //Open the side-cart
-          await user.click(screen.getByAltText("shopping-cart-button"));
-        };
-      });
+      //Open the side-cart
+      await user.click(screen.getByAltText("shopping-cart-button"));
 
       // subtotals should show total money and 4 items
       const subtotals = document.querySelector("#sc-subtotal");
-      expect(subtotals.getByText(`$${totalExpectedCost}`)).toBeInTheDocument();
-      expect(subtotals.getByText("4 items")).toBeInTheDocument();
-    };
+      expect(await findByText(subtotals, `$${totalExpectedCost}`)).toBeInTheDocument();
+      expect(await findByText(subtotals, "Subtotal (4 items)")).toBeInTheDocument();
+    });
+});
+
+describe("Bottom Component / Animation", () => {
+  it(" creates a floating box when item added to cart",
+    async () => {
+      const user = userEvent.setup();
+
+      const memoryRouter = createMemoryRouter(routes, {
+        initialEntries: ["/green/matcha"],
+      });
+
+      render(<RouterProvider router={memoryRouter} />);
+
+      // Add to cart
+      await user.click(screen.getByRole("button", { name: /add to cart/i }));
+
+      // Cart count should update (your UI shows item count in the top bar)
+      expect(await screen.findByAltText("floating tea box")).toBeInTheDocument();
+    });
 });

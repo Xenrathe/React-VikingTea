@@ -2,9 +2,9 @@
 
 ## Viking Tea, a demo storefront w/ shopping cart
 
-![Screenshot of storefront](https://github.com/Xenrathe/React-FormGen/blob/main/XenratheBard.png?raw=true)
+![Screenshot of storefront](https://github.com/Xenrathe/React-VikingTea/blob/main/DefaultPage.png?raw=true)
 
-Viking Tea is a demo storefront for a viking-themed teashop, with a functional shopping cart (though not checkout, naturally), React router, backed by a suite of tests to ensure stability. It's also got a really rad boat animation.
+Viking Tea is a demo storefront for a viking-themed teashop, with a functional shopping cart (though not checkout, naturally), React router, backed by a suite of tests to ensure stability. It's also got a really rad boat animation, with tea treasure boxes that float to the boat and explode in a firework whenever user adds items to the shopping cart.
 
 Viking Tea is active at (https://viking-tea.pages.dev/)
 
@@ -16,7 +16,7 @@ Viking Tea is active at (https://viking-tea.pages.dev/)
 - Cookies to save shopping cart status even in the face of a reload (not yet implemented)
 - Responsive design for mobile, tablet, and desktop (not fully implemented yet)
 
-![Animated screenshot of boat](https://github.com/Xenrathe/React-FormGen/blob/main/Mobile.png?raw=true)
+![Animated screenshot of boat](https://github.com/Xenrathe/React-VikingTea/blob/main/FloatingBoxAnim.webm?raw=true)
 
 ### Tech Stack:
 
@@ -24,16 +24,17 @@ Viking Tea is active at (https://viking-tea.pages.dev/)
 - JS: React w/ Router
 - Backend: N/A - no database
 
-![Screenshot of side checkout](https://github.com/Xenrathe/React-FormGen/blob/main/PrintScreen.png?raw=true)
+![Screenshot of side checkout](https://github.com/Xenrathe/React-VikingTea/blob/main/DragonCart.png?raw=true)
 
 ### Future To-do List
 
-- Add additional tests to the testing suite
 - Checkout page
 
 ### Design Brief
 
 This project was created as part of The Odin Project curriculum, expanding on the <a href="https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart">React: Shopping Cart</a> project.
+
+![Screenshot of responsive mobile](https://github.com/Xenrathe/React-VikingTea/blob/main/Mobile.png?raw=true)
 
 ### Image attribution
 
