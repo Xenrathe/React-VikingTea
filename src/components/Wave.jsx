@@ -110,7 +110,7 @@ function initializeFirework(setFireworks) {
   setFireworks((prev) => [...prev, { id: nextId }]);
 }
 
-export default function Wave({
+function WaveOld({
   image,
   speed,
   floatingItems = [],
@@ -260,6 +260,150 @@ export default function Wave({
     <div className="single-wave">
       <img ref={img1Ref} src={image} alt="" onLoad={handleImageLoad} />
       <img ref={img2Ref} src={image} alt="" onLoad={handleImageLoad} />
+    </div>
+  );
+}
+
+export default function Wave({
+  image,
+  speed,
+  floatingItems = [],
+  setFloatingItems = null,
+  setFireworks = null,
+  syncBoat = false,
+}) {
+  const boat = syncBoat ? document.getElementById("boat-img") : null;
+  const img1Ref = useRef(null);
+  const [imgWidth, setImgWidth] = useState(0);
+
+  // time state refs
+  const lastTime = useRef(performance.now());
+
+  // animation state refs (persist between renders)
+  const x1Ref = useRef(0);
+
+  // per-floating-item X positions & starting offsets (Map<id, x>)
+  const positionsRef = useRef(new Map());
+  const offsetsRef = useRef(new Map());
+
+  // cache DOM elements for floating items (Map<id, element>)
+  const elementCacheRef = useRef(new Map());
+
+  // mirror of floatingItems state so animation loop can read it without being a dep
+  const floatingItemsRef = useRef(floatingItems);
+
+  // requestAnimationFrame id so we can cancel on cleanup
+  const rafRef = useRef(null);
+
+  // adjust animation if user changes window width
+  useEffect(() => {
+    const updateWidth = () => {
+      if (img1Ref.current) {
+        const w = img1Ref.current.offsetWidth;
+        setImgWidth(w);
+      }
+    };
+
+    window.addEventListener("resize", updateWidth);
+    updateWidth();
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
+  const handleImageLoad = () => {
+    if (img1Ref.current) {
+      setImgWidth(img1Ref.current.offsetWidth);
+    }
+  };
+
+  // sync floatingItemsRef and initialize new item positions
+  useEffect(() => {
+    floatingItemsRef.current = floatingItems;
+
+    // initialize positions for newly added items (skip those already in map)
+    floatingItems.forEach((item) => {
+      if (!positionsRef.current.has(item.id) && !item.inBoat) {
+        const startX = imgWidth;
+        positionsRef.current.set(item.id, startX);
+        offsetsRef.current.set(item.id, x1Ref.current);
+      }
+    });
+
+    // remove any positions for items that were removed from the array
+    const idsInState = new Set(floatingItems.map((i) => i.id));
+    positionsRef.current.forEach((_, id) => {
+      if (!idsInState.has(id)) positionsRef.current.delete(id);
+    });
+  }, [floatingItems, imgWidth]);
+
+  // main animation loop
+  useEffect(() => {
+    if (!imgWidth) return;
+
+    x1Ref.current = 0;
+
+    //cycleLength depends on image, if you change from Wave1.png (which has 2 waves/image), this may change
+    const cycleLength = imgWidth / 4;
+
+    // cancel any existing loop
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+
+    lastTime.current = performance.now();
+
+    const animate = (now) => {
+      // animating the wave image
+      const timeDelta = now - lastTime.current; //in ms
+      lastTime.current = now;
+      const adjustedDelta = timeDelta / 15;
+
+      x1Ref.current -= speed * adjustedDelta;
+
+      if (x1Ref.current <= -imgWidth / 2) {
+        x1Ref.current = 0;
+      }
+
+      if (img1Ref.current)
+        img1Ref.current.style.transform = `translateX(${x1Ref.current}px)`;
+
+      // the boat animation
+      if (syncBoat) {
+        animateBoat(x1Ref, cycleLength, boat);
+      }
+
+      // floating item animation
+      if (setFloatingItems) {
+        animateFloatingItems(
+          setFloatingItems,
+          setFireworks,
+          elementCacheRef,
+          floatingItemsRef,
+          positionsRef,
+          offsetsRef,
+          cycleLength,
+          imgWidth,
+          speed * adjustedDelta,
+          boat
+        );
+      }
+
+      rafRef.current = requestAnimationFrame(animate);
+    };
+
+    rafRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
+    };
+  }, [speed, imgWidth, syncBoat, setFloatingItems]);
+
+  return (
+    <div className="single-wave">
+      <img ref={img1Ref} src={image} alt="" onLoad={handleImageLoad} />
     </div>
   );
 }

@@ -8,10 +8,10 @@ import BoatWDogMed from "../assets/BoatWDogTM.png";
 import BoatWDogLarge from "../assets/BoatWDogTL.png";
 import BoatWDogVLarge from "../assets/BoatWDogTLL.png";
 import BoatWDogVVLarge from "../assets/BoatWDogTLLL.png";
-import Wave1 from "../assets/Wave1.png";
-import Wave2 from "../assets/Wave2.png";
-import Wave3 from "../assets/Wave3.png";
-import Wave4 from "../assets/Wave4.png";
+import Wave1L from "../assets/Wave1L.png";
+import Wave2L from "../assets/Wave2L.png";
+import Wave3L from "../assets/Wave3L.png";
+import Wave4L from "../assets/Wave4L.png";
 import Wave from "./Wave";
 
 function Firework({ id, onComplete }) {
@@ -82,9 +82,9 @@ export default function BottomBar({ floatingItems, setFloatingItems, cart }) {
   return (
     <div id="bottom" className="tl-shadow">
       <div className="waves-viewport">
-        <Wave image={Wave4} speed={2} />
-        <Wave image={Wave3} speed={4} />
-        <Wave image={Wave2} speed={6} />
+        <Wave image={Wave4L} speed={2} />
+        <Wave image={Wave3L} speed={4} />
+        <Wave image={Wave2L} speed={6} />
         <div id="boat">
           <img id="boat-img" src={boatImg} />
           {fireworks.map((fw) => (
@@ -113,7 +113,7 @@ export default function BottomBar({ floatingItems, setFloatingItems, cart }) {
           })}
         </div>
         <Wave
-          image={Wave1}
+          image={Wave1L}
           speed={8}
           floatingItems={floatingItems}
           setFloatingItems={setFloatingItems}
