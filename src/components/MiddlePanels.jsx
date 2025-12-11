@@ -40,7 +40,10 @@ export default function MiddlePanels() {
   }
 
   return (
-    <div id="middle" className={useErrorShelf ? "has-error" : ""}>
+    <div
+      id="middle"
+      className={`tl-shadow${useErrorShelf ? " has-error" : ""}`}
+    >
       {useErrorShelf ? (
         <img id="error-bg" src={BrokenShip} />
       ) : (

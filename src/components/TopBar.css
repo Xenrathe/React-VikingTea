@@ -27,9 +27,12 @@
 #top-banner #announcement {
   background: rgb(49, 66, 77);
   color: rgb(212, 250, 250);
+  box-shadow: 0px 5px 3px 0px rgba(0, 0, 0, 0.3);
   width: 100%;
   font-size: 12px;
   min-height: 25px;
+  border-bottom: outset 1px rgba(0, 0, 0, 0.5);
+  border-right: outset 1px rgba(0, 0, 0, 0.5);
 
   display: flex;
   align-items: center;
@@ -71,6 +74,13 @@
   cursor: pointer;
 }
 
+#top-banner .menu-top .title,
+#top-banner #icon-and-title {
+  text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.8),
+    5px 5px 2px rgba(0, 0, 0, 0.2);
+  font-family: "NorseBold";
+}
+
 @media screen and (max-width: 749px) {
   #top-banner #categories {
     display: none;
@@ -80,7 +90,7 @@
     left: 5px;
     background-color: rgb(220, 244, 252);
     border: inset black 2px;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    box-shadow: rgb(0, 0, 0, 0.5) 15px 15px 15px 0px;
     z-index: 100;
     min-width: 300px;
     padding: 10px;
@@ -109,7 +119,7 @@
   }
 
   #top-banner .menu-top .title {
-    font-size: 20px;
+    font-size: 25px;
     font-family: NorseBold;
   }
 
@@ -142,20 +152,27 @@
 }
 
 #top-banner #categories a {
-  color: rgb(9, 106, 170);
-  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
+  color: rgb(6, 68, 109);
+  background: rgb(245, 245, 245);
+  /*clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);*/
   transition: all 0.5s;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 10px 9px 8px -6px rgba(0, 0, 0, 0.5);
+  border: solid 2px #41403e;
+  padding: 0px 2px;
 }
 
 #top-banner #categories a:hover,
 #top-banner #categories .active-link {
-  color: rgb(6, 65, 105);
   background: #f4d35e;
+  box-shadow: 1px 3px 8px -6px rgba(0, 0, 0, 0.5);
+}
+
+#top-banner #categories a:active {
 }
 
 #top-banner #icon-and-title {
   justify-content: center;
-  font-family: "NorseBold";
   font-size: 30px;
 }
 
@@ -168,11 +185,23 @@
 
 #top-banner #boat-cart {
   height: 40px;
+  width: 40px;
+  min-width: 0px;
   cursor: pointer;
+  background-image: var(--boat);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#top-banner #boat-cart:hover {
+  background-image: var(--boat-hover);
+}
+
+#top-banner #boat-cart:active {
+  background-image: var(--boat-active);
 }
 
 #top-banner #count-cart {
-  border: 1px solid rgb(21, 17, 248);
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -180,4 +209,19 @@
   height: 25px;
   width: 25px;
   cursor: pointer;
+  font-family: "NorseBold";
+  font-size: 20px;
+  background: rgb(247, 247, 247);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s;
+}
+
+#top-banner #count-cart:hover {
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
+  background: #f4d35e;
+  transition: all 0.4s;
+}
+
+#top-banner #count-cart:active {
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.5);
 }

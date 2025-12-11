@@ -35,10 +35,16 @@
   align-items: center;
   padding: 5px 10px;
   margin-bottom: 0px;
-  font-family: "Roboto";
   font-size: 20px;
   background-color: rgb(220, 244, 252);
   height: 30px;
+}
+
+#sc-titlebar #sc-title {
+  text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.8),
+    5px 5px 2px rgba(0, 0, 0, 0.2);
+  font-family: "NorseBold";
+  font-size: 25px;
 }
 
 #side-cart hr {

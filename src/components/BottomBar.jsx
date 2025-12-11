@@ -80,7 +80,7 @@ export default function BottomBar({ floatingItems, setFloatingItems, cart }) {
   else if (currentCount < 16) boatImg = BoatWDogVLarge;
 
   return (
-    <div id="bottom">
+    <div id="bottom" className="tl-shadow">
       <div className="waves-viewport">
         <Wave image={Wave4} speed={2} />
         <Wave image={Wave3} speed={4} />

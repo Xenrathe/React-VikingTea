@@ -1,5 +1,7 @@
 import "./TopBar.css";
 import boat from "../assets/boatB.png";
+import boatHover from "../assets/boatBH.png";
+import boatActive from "../assets/boatBA.png";
 import menuicon from "../assets/menu.svg";
 import ShoppingCart from "./ShoppingCart";
 import { NavLink } from "react-router-dom";
@@ -9,7 +11,7 @@ import {
   expandCategoryMenu,
   shelfExpansion,
 } from "../UtilityFunctions";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function TopBar({
   cart,
@@ -18,12 +20,20 @@ export default function TopBar({
   setFloatingItems,
   floatingItemCount,
 }) {
-  const [cartVis, setCartVis] = useState(false);
+  //force preloading of images
+  useEffect(() => {
+    const images = [boat, boatHover, boatActive];
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
+  const [cartVis, setCartVis] = useState(false);
   const shelfCategories = ["Black", "Green", "Oolong", "Teaware"];
 
   return (
-    <div id="top-banner">
+    <div id="top-banner" className="tl-shadow">
       <div id="announcement">Serving Tea to Taste Berserkers since 972</div>
       <nav>
         <div id="categories-small">
@@ -58,10 +68,13 @@ export default function TopBar({
         </div>
         <div id="icon-and-title">VIKING TEA</div>
         <div id="cart">
-          <img
+          <div
             id="boat-cart"
-            alt="shopping-cart-button"
-            src={boat}
+            style={{
+              "--boat": `url(${boat})`,
+              "--boat-hover": `url(${boatHover})`,
+              "--boat-active": `url(${boatActive})`,
+            }}
             onClick={() => setCartVis(true)}
           />
           <span id="count-cart" onClick={() => setCartVis(true)}>

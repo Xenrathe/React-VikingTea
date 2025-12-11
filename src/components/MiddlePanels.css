@@ -65,6 +65,7 @@
   position: absolute;
   right: 0px;
   box-sizing: border-box;
+  box-shadow: none;
 }
 
 #middle .tea-shelf a {
@@ -106,10 +107,23 @@
   align-items: center;
   border: 1px solid black;
   cursor: pointer;
+
+  transition: box-shadow 0s;
 }
 
 #middle .tea-shelf .tea-icon:hover {
   box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition-duration: 0s;
+}
+
+#middle .tea-shelf .tea-icon:active {
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.6);
+  transition-duration: 0.1s;
+}
+
+/* slow return after click or hover ends */
+#middle .tea-shelf .tea-icon:not(:active) {
+  transition-duration: 0.3s;
 }
 
 #middle .tea-shelf img {

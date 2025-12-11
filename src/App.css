@@ -67,6 +67,10 @@ h1 {
   line-height: 1.1;
 }
 
+.tl-shadow {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
 .item-count-adjust {
   height: 40px;
   border: 1px solid black;
@@ -102,16 +106,21 @@ h1 {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background: rgb(221, 221, 221);
+  background: rgb(248, 248, 248);
   color: rgb(114, 32, 32);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s;
 }
 
 .x-btn:hover {
   background: rgb(230, 230, 230);
   color: rgb(131, 37, 37);
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s;
 }
 
 .x-btn:active {
   background: rgb(202, 201, 201);
   color: rgb(109, 31, 31);
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.5);
 }
