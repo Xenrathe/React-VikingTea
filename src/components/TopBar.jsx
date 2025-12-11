@@ -6,11 +6,7 @@ import menuicon from "../assets/menu.svg";
 import ShoppingCart from "./ShoppingCart";
 import { NavLink } from "react-router-dom";
 import React from "react";
-import {
-  cartCount,
-  expandCategoryMenu,
-  shelfExpansion,
-} from "../UtilityFunctions";
+import { cartCount, expandCategoryMenu } from "../UtilityFunctions";
 import { useState, useEffect } from "react";
 
 export default function TopBar({
@@ -19,6 +15,7 @@ export default function TopBar({
   floatingItems,
   setFloatingItems,
   floatingItemCount,
+  setShelfIsExpanded,
 }) {
   //force preloading of images
   useEffect(() => {
@@ -56,7 +53,7 @@ export default function TopBar({
                 to={`/${cat.toLowerCase()}`}
                 className={({ isActive }) => (isActive ? "active-link" : "")}
                 onClick={() => {
-                  shelfExpansion(true);
+                  setShelfIsExpanded(true);
                   expandCategoryMenu(false);
                 }}
               >

@@ -8,7 +8,7 @@ function animateBoat(x1Ref, cycleLength, boat) {
     const boatRotMin = -7;
     const boatRotMax = 5;
 
-    //this value is necessary because boat's position is responsive
+    //this value is necessary because boat's position is different for mobile
     const leftPx = parseFloat(getComputedStyle(boat).left);
     let offset = 0;
     if (leftPx == -20) offset = -0.15;
@@ -110,6 +110,7 @@ function initializeFirework(setFireworks) {
   setFireworks((prev) => [...prev, { id: nextId }]);
 }
 
+//a deprecated function back when I used two images rather a single longer one
 function WaveOld({
   image,
   speed,
@@ -272,7 +273,7 @@ export default function Wave({
   setFireworks = null,
   syncBoat = false,
 }) {
-  const boat = syncBoat ? document.getElementById("boat-img") : null;
+  const boat = document.getElementById("boat-img");
   const img1Ref = useRef(null);
   const [imgWidth, setImgWidth] = useState(0);
 
@@ -341,7 +342,7 @@ export default function Wave({
 
     x1Ref.current = 0;
 
-    //cycleLength depends on image, if you change from Wave1.png (which has 2 waves/image), this may change
+    //cycleLength depends on image, if you change from Wave1L.png (which has 4 waves/image), this may change
     const cycleLength = imgWidth / 4;
 
     // cancel any existing loop
@@ -364,8 +365,11 @@ export default function Wave({
         x1Ref.current = 0;
       }
 
+      const isMobile = parseFloat(getComputedStyle(boat).left) == -20;
       if (img1Ref.current)
-        img1Ref.current.style.transform = `translateX(${x1Ref.current}px)`;
+        img1Ref.current.style.transform = `${
+          isMobile ? "scaleY(0.6) " : ""
+        }translateX(${x1Ref.current}px)`;
 
       // the boat animation
       if (syncBoat) {
@@ -403,7 +407,12 @@ export default function Wave({
 
   return (
     <div className="single-wave">
-      <img ref={img1Ref} src={image} alt="" onLoad={handleImageLoad} />
+      <img
+        ref={img1Ref}
+        src={image}
+        alt="animated wave"
+        onLoad={handleImageLoad}
+      />
     </div>
   );
 }

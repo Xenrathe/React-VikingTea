@@ -14,8 +14,15 @@ import { oolongTeas } from "../data/products-oolong.js";
 import { teaware } from "../data/products-teaware.js";
 
 export default function MiddlePanels() {
-  const { cart, setCart, floatingItems, setFloatingItems, floatingItemCount } =
-    useOutletContext();
+  const {
+    cart,
+    setCart,
+    floatingItems,
+    setFloatingItems,
+    floatingItemCount,
+    shelfIsExpanded,
+    setShelfIsExpanded,
+  } = useOutletContext();
   const { shelf, slug } = useParams();
 
   const validShelves = ["black", "green", "oolong", "teaware"];
@@ -32,7 +39,14 @@ export default function MiddlePanels() {
     else if (shelf == "oolong") items = oolongTeas;
     else if (shelf == "teaware") items = teaware;
 
-    actualShelfComponent = <TeaShelf shelf={shelf} slug={slug} items={items} />;
+    actualShelfComponent = (
+      <TeaShelf
+        shelf={shelf}
+        shelfIsExpanded={shelfIsExpanded}
+        setShelfIsExpanded={setShelfIsExpanded}
+        items={items}
+      />
+    );
     selectedTea = slug ? items.find((t) => slugify(t.Name) === slug) : null;
   } else {
     actualShelfComponent = <ErrorShelf />;

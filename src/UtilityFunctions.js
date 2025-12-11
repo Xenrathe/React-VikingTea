@@ -113,7 +113,7 @@ export function cartCount(cart) {
 
 //floatingItems is an array of objects
 // [{id: #, img: somesrc, waveOffset: ##, inBoat: false/true}]
-export function boatCount(floatingItems, cart) {
+export function boatCount(floatingItems) {
   const initialVal = 0;
 
   const inBoatCount = floatingItems

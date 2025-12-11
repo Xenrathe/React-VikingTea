@@ -1,28 +1,27 @@
 import { Link } from "react-router-dom";
-import {
-  slugify,
-  expandCategoryMenu,
-  shelfExpansion,
-} from "../UtilityFunctions.js";
+import { slugify, expandCategoryMenu } from "../UtilityFunctions.js";
 
 // items will be filled with an array of objects (products with various keys)
-export default function TeaShelf({ shelf, slug, items }) {
+export default function TeaShelf({
+  shelf,
+  shelfIsExpanded,
+  setShelfIsExpanded,
+  items,
+}) {
   let shelfTitle = "Teaware";
   if (shelf == "green") shelfTitle = "Green Tea";
   else if (shelf == "black") shelfTitle = "Black Tea";
   else if (shelf == "oolong") shelfTitle = "Oolong Tea";
 
-  if (slug == "" || slug == null) shelfExpansion(true);
-
   return (
     <>
-      <div className="tea-shelf panel expanded">
+      <div className={`tea-shelf panel${shelfIsExpanded ? " expanded" : ""}`}>
         <div className="title-bar">
           <span>{shelfTitle}</span>
           <span
             id="ts-close"
             className="x-btn"
-            onClick={() => shelfExpansion(false)}
+            onClick={() => setShelfIsExpanded(false)}
           >
             X
           </span>
@@ -34,7 +33,7 @@ export default function TeaShelf({ shelf, slug, items }) {
               to={`/${shelf}/${slugify(item.Name)}`}
               className="tea-icon"
               onClick={() => {
-                shelfExpansion(false);
+                setShelfIsExpanded(false);
                 expandCategoryMenu(false);
               }}
             >

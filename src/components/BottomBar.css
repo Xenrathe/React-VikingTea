@@ -64,14 +64,9 @@
 }
 
 @media screen and (max-width: 550px) {
-  .single-wave {
-    transform: scaleY(0.5);
-    transform-origin: bottom;
-    bottom: 0;
-  }
-
   .single-wave img {
-    bottom: 0;
+    transform-origin: bottom;
+    bottom: 22px;
   }
 
   #boat-img {

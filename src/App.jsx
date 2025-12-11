@@ -21,11 +21,12 @@ function App() {
   useEffect(() => {
     localStorage.setItem("floatingitems", JSON.stringify(floatingItems));
   }, [floatingItems]);
-
   const floatingItemCount = useRef(
     Number(localStorage.getItem("ficount")) || 0
   );
   //NOTE: no useEffect hook here - the ficount in local storage is updated where the ref is actually incremented
+
+  const [shelfIsExpanded, setShelfIsExpanded] = useState(true);
 
   return (
     <div className="app">
@@ -35,6 +36,7 @@ function App() {
         floatingItems={floatingItems}
         setFloatingItems={setFloatingItems}
         floatingItemCount={floatingItemCount}
+        setShelfIsExpanded={setShelfIsExpanded}
       />
       <Outlet
         context={{
@@ -43,6 +45,8 @@ function App() {
           floatingItems,
           setFloatingItems,
           floatingItemCount,
+          shelfIsExpanded,
+          setShelfIsExpanded,
         }}
       />
       <BottomBar
