@@ -34,7 +34,11 @@ export default function TopBar({
       <div id="announcement">Serving Tea to Taste Berserkers since 972</div>
       <nav>
         <div id="categories-small">
-          <img src={menuicon} onClick={() => expandCategoryMenu(true)} />
+          <div id="pancake" onClick={() => expandCategoryMenu(true)}>
+            <hr />
+            <hr />
+            <hr />
+          </div>
         </div>
         <div id="categories">
           <div className="menu-top">
