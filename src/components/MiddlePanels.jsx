@@ -1,6 +1,5 @@
 import "./MiddlePanels.css";
 import TeaShelf from "./TeaShelf.jsx";
-import TeaSpice from "../assets/tea-spice.jpg";
 import BrokenShip from "../assets/broken-ship.jpg";
 import ShoppingItem from "./ShoppingItem.jsx";
 import DefaultTeaShelf from "./DefaultShelf.jsx";
@@ -58,11 +57,7 @@ export default function MiddlePanels() {
       id="middle"
       className={`tl-shadow${useErrorShelf ? " has-error" : ""}`}
     >
-      {useErrorShelf ? (
-        <img id="error-bg" src={BrokenShip} />
-      ) : (
-        <img id="default-bg" src={TeaSpice} />
-      )}
+      {useErrorShelf ? <img id="error-bg" src={BrokenShip} /> : null}
       {actualShelfComponent}
       <ShoppingItem
         selectedTea={selectedTea}

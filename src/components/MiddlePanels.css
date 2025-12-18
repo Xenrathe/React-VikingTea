@@ -35,6 +35,28 @@
   z-index: 0;
 }
 
+#middle .panel.default {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  position: relative;
+}
+
+#middle.has-error .panel {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+#middle .panel.default img {
+  height: 95%;
+  width: auto;
+  filter: drop-shadow(8px 12px 8px rgba(0, 0, 0, 0.5));
+}
+
+#middle.has-error .panel.default img {
+  display: none;
+}
+
 @media screen and (max-width: 750px) {
   #middle #default-bg {
     left: -450px;
@@ -72,9 +94,7 @@
   color: black;
 }
 
-#middle .default,
 #middle .error {
-  background-color: rgba(255, 255, 255, 0.2) !important;
   position: relative;
 }
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { adjustCart } from "../UtilityFunctions";
+import PaperPot from "../assets/paperpot.png";
 
 export default function ShoppingItem({
   selectedTea,
@@ -19,7 +20,11 @@ export default function ShoppingItem({
 
   if (selectedTea == null) {
     // DEFAULT VIEW (no tea selected yet)
-    return <div id="item-display" className="panel default"></div>;
+    return (
+      <div id="item-display" className="panel default">
+        <img src={PaperPot} />
+      </div>
+    );
   } else {
     const unit =
       selectedTea.Unit + (selectedTea.Pkgs[0].Quantity > 1 ? "s" : "");
