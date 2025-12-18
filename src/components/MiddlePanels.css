@@ -103,7 +103,7 @@
   position: absolute;
   top: 25px;
   right: 12px;
-  font-size: 30px;
+  font-size: 40px;
   font-family: Garamond;
   color: white;
   text-shadow: #ffcc00 1px 0 10px;
@@ -112,6 +112,7 @@
   -webkit-backdrop-filter: blur(10px);
   padding: 5px 15px;
   border-radius: 10px;
+  font-family: "Amatic";
 }
 
 #middle .error .description {

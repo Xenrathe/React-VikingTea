@@ -8,6 +8,11 @@
   src: url("/NorseBold.otf");
 }
 
+@font-face {
+  font-family: "Amatic";
+  src: url("/Amatic.ttf");
+}
+
 #root {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("/background2.png");
