@@ -61,6 +61,10 @@
   #middle #default-bg {
     left: -450px;
   }
+
+  #middle #item-display.default {
+    display: none;
+  }
 }
 
 #middle .tea-shelf {
