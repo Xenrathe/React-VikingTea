@@ -13,9 +13,6 @@
   src: url("/Amatic.ttf");
 }
 
-#root {
-}
-
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,6 +25,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* i.e. clamp(10px, (100vh - 770px) / 3, 4vh)*/
+  --main-section-margins: min(4vh, max(10px, calc((100vh - 770px) / 3)));
 }
 
 .app {
