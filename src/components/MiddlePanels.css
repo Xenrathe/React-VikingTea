@@ -3,7 +3,8 @@
   min-width: min(1500px, 96vw);
   max-width: min(1500px, 96vw);
   height: calc(78vh - 350px);
-  margin-bottom: 3vh;
+  min-height: 350px;
+  margin-bottom: max(10px, calc((100vh - 770px) / 3));
 
   position: relative;
   display: flex;
@@ -25,6 +26,7 @@
 #middle .panel {
   border: solid 1px black;
   flex: 1;
+  min-height: 350px;
 }
 
 #middle #default-bg,

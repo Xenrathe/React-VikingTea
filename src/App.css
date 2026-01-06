@@ -14,10 +14,6 @@
 }
 
 #root {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("/background2.png");
-  background-size: cover;
-  background-position: center;
 }
 
 :root {
@@ -65,6 +61,11 @@ body {
   max-width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("/background2.png");
+  background-size: cover;
+  background-position: center;
 }
 
 h1 {
